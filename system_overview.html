@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-03-30 Tue 19:33 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Kyle Cotton" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="outline-container-org4648a12" class="outline-2">
+<h2 id="org4648a12">Introduction</h2>
+<div class="outline-text-2" id="text-org4648a12">
+<p>
+Clayanse is a complex system comprising of three essential parts.
+The first part of the system is the web interface, this how the user controls the robot,
+secondly we have the robot itself, which actually provides the cleaning service,
+finally, at the heart of the system we have the backend, responsible for enabling communication between the web interface and the robot.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org701c513" class="outline-2">
+<h2 id="org701c513">Web Interface</h2>
+<div class="outline-text-2" id="text-org701c513">
+<p>
+The web interface we have provided allows the user to interact with the robot, by calling the REST API endpoints provided by the backend.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">TODO: Lucia/Justin to add some specifics
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org99d31f3" class="outline-2">
+<h2 id="org99d31f3">Clayanse Robot</h2>
+<div class="outline-text-2" id="text-org99d31f3">
+<div class="org-src-container">
+<pre class="src src-text">TODO: Konrad to add some details
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org21fd66c" class="outline-2">
+<h2 id="org21fd66c">Backend</h2>
+<div class="outline-text-2" id="text-org21fd66c">
+</div>
+<div id="outline-container-org230ce0e" class="outline-3">
+<h3 id="org230ce0e">Overview</h3>
+<div class="outline-text-3" id="text-org230ce0e">
+<p>
+One of the most essential aspects of the project is the connection between the backend server and the web interface and robot.
+</p>
+
+<p>
+In order to support the operation of the robot and the web interface the backend system provides a myriad of services, which are secure, highly performant, and extensible.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc7f4be4" class="outline-3">
+<h3 id="orgc7f4be4">Rationale</h3>
+<div class="outline-text-3" id="text-orgc7f4be4">
+</div>
+<div id="outline-container-orgc6feb44" class="outline-4">
+<h4 id="orgc6feb44">Architecture</h4>
+<div class="outline-text-4" id="text-orgc6feb44">
+<p>
+Having a centralised C2 (Command &amp; Control Server) allows for greater simplification and de-duplication of functionality across the various controlling entities that could be employed in the future, in addition to the Web Application that is currently in development. Any system that is capable of consuming the Claynse REST API (Representational State Transfer Application Program Interface) will be able to issue commands to the robot.
+</p>
+
+<p>
+This allows for the various elements of the system to be developed in isolation, and to be interchangeable with other components, resulting in a modular architecture.
+</p>
+
+<p>
+It is possible for the backend systems to store the metrics of the robot, and potentially use them in the future - whether for simple applications such as graphs, or more complex data analysis to identify charging patterns, command behaviours or to provide additional context to log messages.
+</p>
+
+<p>
+By centralising the issuing of commands we can ensure that only valid commands are ever given to the robot, allowing for comprehensive validation of all potential commands.
+This abstracts substantial complexity for the hardware team: not only would this logic reduce cost (if this was to be migrated to an integrated circuit), it also allows custom rules to be added dynamically in the future - without the requirement of a firmware update. This helps to provide a seamless user experience.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3df3b9b" class="outline-4">
+<h4 id="org3df3b9b">REST API</h4>
+<div class="outline-text-4" id="text-org3df3b9b">
+<p>
+It was decided that a REST API would be the best method of communication, there were a few reasons for this.
+</p>
+<ul class="org-ul">
+<li>Using a REST API is much simpler - taking into account all of the constraining factors, such as development time and the technical debt involved, it was not feasible to implement our own protocol, even an internet layer protocol would be a massive undertaking.</li>
+<li>I had considered an approach utilising a socket connection to the robot to avoid the overhead of establishing a TCP/HTTP connection each time, this would have been a mistake. This would have required the server to be able to hold open connections for each robot using the service.
+<ul class="org-ul">
+<li>As the popularity of the product increased this would have not been sustainable to have thousands of open socket connections to a machine</li>
+<li>This would have caused a very large resource allocation but very low utilisation, which is a inefficient use of compute resources</li>
+</ul></li>
+</ul>
+
+<p>
+Therefore it was decided that a REST API using the standard <code>HTTP</code> methods for interacting with the system was the most appropriate approach.
+</p>
+</div>
+</div>
+<div id="outline-container-orge0f2093" class="outline-4">
+<h4 id="orge0f2093">Dockerized Application</h4>
+<div class="outline-text-4" id="text-orge0f2093">
+</div>
+<div id="outline-container-org24639a3" class="outline-5">
+<h5 id="org24639a3">Scaling</h5>
+<div class="outline-text-5" id="text-org24639a3">
+<p>
+This allows each instance of our backend to run independently of each other in the case we need to scale the application, it is as simple as increasing the number of instances in the swarm manager (Docker Swarm, Kubernetes).
+</p>
+</div>
+</div>
+<div id="outline-container-orgc353034" class="outline-5">
+<h5 id="orgc353034">Deployment</h5>
+<div class="outline-text-5" id="text-orgc353034">
+<p>
+The deployment of our applications is far simpler, in order to run the backend system it will be as simple as running the image on the server, again using the <code>Makefile</code>, the devops engineer would only have to run the `make` command.
+Equally this could be done by a CI/CD pipeline.
+</p>
+
+<p>
+Other cloud providers such as Google Cloud Run &amp; AWS Lambda have the ability to upload an image directly and have it run. This has the advantage of not having to manage infrastructure and have the ability to scale to demand, spinning down to zero when not in use. This is a very efficient use of compute.
+</p>
+
+<p>
+Again looking to the future, without moving to micro-services, a Serverless Queue could be added to allow them to be buffered and rate limited to avoid overwhelming the server but still being able to receive requests.
+Another option would be to have a load balancer, and separate servers based on geographical location very similar to how game servers manage the immense amount of traffic they are subjected to.
+</p>
+</div>
+</div>
+<div id="outline-container-org0180adf" class="outline-5">
+<h5 id="org0180adf">Development</h5>
+<div class="outline-text-5" id="text-org0180adf">
+<p>
+Another key advantage of using Docker and Docker Compose is the ease of use for other developers in other teams. For example say the frontend team wants to check that their application is making the correct calls instead of deploying both into production and testing (which is a very bad practise), they can juts run both locally.
+</p>
+
+<p>
+This keeps the development costs low and reduces the development complexity, the other developers would just have to clone the backend and run the <code>make</code> command, this would start all of the backend systems locally.
+</p>
+</div>
+</div>
+<div id="outline-container-orga6e9807" class="outline-5">
+<h5 id="orga6e9807">Multistage Docker Build</h5>
+<div class="outline-text-5" id="text-orga6e9807">
+<p>
+The biggest issue I faced with the backend systems was the very large image size.
+The final size is determined by the last image used in the <code>Dockerfile</code>: in our case this is the <code>rust</code> image, whose total size, including the static assets, is <code>4.07 GB</code>.
+</p>
+
+<p>
+The <code>rust</code> image needs to contain all of the dependencies to compile the source code and statically link it against <code>libc</code>, therefore the image needs to contain the entire rust tool chain; <code>cargo</code>, <code>rustc</code>, etc, in addition to a shell, and all of the standard <code>libc</code> libraries. However, it is not possible to use a smaller final image as all of these resources and dependencies are required in order to create our final executable.
+</p>
+
+<p>
+The solution to the issue is to use a mutlistage build process.
+We use a <code>builder</code> image which contains all of the required dependencies and software to create our executable.
+Once this executable has been created, we can copy it to another, much smaller, image.
+In our case we use the Google Distroless Images. This is done for a few reasons: it allows us to create images with size of around <code>28 MB</code>, which is considerably smaller, and is more secure as it does not contain a shell or other essential software that could be exploited.
+</p>
+</div>
+</div>
+<div id="outline-container-org9975483" class="outline-5">
+<h5 id="org9975483">Consistent Environments</h5>
+<div class="outline-text-5" id="text-org9975483">
+<p>
+From a DevOps perspective the current infrastructure is excellent it allows for the development environment that is run locally to be used in production.
+It is as simple as cloning the code on the server and running make.
+</p>
+
+<p>
+From a team perspective this is great, it allows for every member of the team to run the full stack system by only installing Docker, if there implementation works locally it is then highly likely to work in production, giving the developer confidence in their work, ensuring more robust and better tested code finds its way into production.
+</p>
+
+<p>
+Another major advantage that is obvious is simplicity, only docker needs to be installed, no obscure or insecure dependencies are required.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org1b7cfb5" class="outline-4">
+<h4 id="org1b7cfb5">PostgreSQL Database</h4>
+<div class="outline-text-4" id="text-org1b7cfb5">
+<p>
+The database that was chosen for the project was the open-source, high performance, relational SQL database PostgreSQL.
+</p>
+
+<p>
+I have decided to use the industry tried and trusted PostgreSQL, due to the reasons above.
+A relational SQL database that is fast, reliable and has extensive internal rollback functionality, in case of an error during a transaction or other operation.
+</p>
+
+<p>
+The commands to run the database migrations are detailed in the back-end systems <code>Makefile</code>, allowing them to be conveniently documented and executed by other team members.
+</p>
+</div>
+
+<div id="outline-container-org55def72" class="outline-5">
+<h5 id="org55def72">High Performance</h5>
+<div class="outline-text-5" id="text-org55def72">
+<p>
+With respect to the scaling of the backend systems, unless the architectural decision was made to transfer to micro-services, a single database server would be used.
+This means that the database must be high performance to service all of the request from the backend in a timely manner.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga857764" class="outline-5">
+<h5 id="orga857764">Security</h5>
+<div class="outline-text-5" id="text-orga857764">
+<p>
+The current design ensures that the database is not accessible via the internet, actually it is only accessible to the backend systems contain running on the internal docker network. This greatly increases the overall data security of the system, the only method for data exfiltration is through the REST API.
+</p>
+</div>
+</div>
+<div id="outline-container-orgac3ad1c" class="outline-5">
+<h5 id="orgac3ad1c">Migrations</h5>
+<div class="outline-text-5" id="text-orgac3ad1c">
+<p>
+All of the migrations for the system are executed through three commands in the <code>Makefile</code>: <code>make migrations-run</code>, <code>make migrations-reset</code>, and <code>make reset-database</code>.
+</p>
+
+<p>
+The <code>up.sql</code> file contains the SQL commands used to create all of the tables used in the system, in addition it also contains constraints, ensuring that the database entries remain consistent.
+down.sql
+The <code>down.sql</code> file contains the SQL commands used to destroy all of the tables in the database.
+The <code>reset.sql</code> file contains the SQL commands used to remove all of the data from the tables.
+The <code>robot.sql</code> file contains the values of the robots corresponding to the QR codes that have been generated.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd4ceeb7" class="outline-3">
+<h3 id="orgd4ceeb7">Services</h3>
+<div class="outline-text-3" id="text-orgd4ceeb7">
+</div>
+<div id="outline-container-org4efd1fd" class="outline-4">
+<h4 id="org4efd1fd"><code>Auth</code> Endpoint</h4>
+<div class="outline-text-4" id="text-org4efd1fd">
+<p>
+In order to prevent abuse or malicious attacks to the system, all of the command issuing endpoints are protected, they require that the user is Authenticated and has the correct Authorisation, before they will process the request.
+</p>
+
+<p>
+To authenticate with the backend, you will need to provide your username and password to the <code>/auth</code> endpoint, assuming the credentials are valid, you will be provided with a short lived JWT (JSON Web Token), authorising that user to access their command service in a stateless manner.
+</p>
+</div>
+</div>
+<div id="outline-container-orgd55150b" class="outline-4">
+<h4 id="orgd55150b"><code>Command</code> Endpoint</h4>
+<div class="outline-text-4" id="text-orgd55150b">
+<p>
+The HTTP POST method once applied to this endpoint allows the issuing of commands by some user to the system.
+All of the required is passes via the request body, ensuring it is encrypted by the TLS/SSL protocol.
+However, this endpoint is secured - it requires an authorisation token specifically a JWT (JSON Web Token), without a valid token a 401 Unauthorized response will be received.
+</p>
+
+<p>
+Once the request has be received, the backend middleware will take the request and validate the JWT (returning early if required), before calling the specific handler, where the command that the user has provided will be validated before being stored in the database.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb6349d4" class="outline-4">
+<h4 id="orgb6349d4"><code>Polling</code> Endpoint</h4>
+<div class="outline-text-4" id="text-orgb6349d4">
+<p>
+The only endpoint that the robot will call is the /poll endpoint, the request to this endpoint will include essential metrics of the robot including the current Instruction the robot is performing and the current battery level of the robot.
+</p>
+
+<p>
+The server then gathers the current task the robot should be doing (the command it previoudsly issued to it), the current state of the robot (the infomation given in the request), and the next command that will be issued if any.
+</p>
+
+<p>
+One of the core rules for the system is that if the battery level of the robot is insufficient the robot will immediately abort (Abort(AbortReason::LowBattery)) the other rules allow for the various functions of the system.
+</p>
+
+<p>
+As previously discussed, we can see the Strict Type System, coming into its own, allowing all of the different types of the system to be expressed.
+The way in which I have written the system ensures that the core rules for the system are encoded in the type system, therefore invalid states simply cannot be reached, since the system will not compile, this is a major advantage and design choice I have decided be using the Rust language idiomatically.
+</p>
+
+
+<p>
+As previously discussed the robot will use a standard <code>HTTP</code> request to the backend system.
+This is referred to as Polling, the robot gives some context to the backend, allowing an appropriate response to be coordinated.
+</p>
+
+<p>
+A <code>poll</code> contains the minimal set of context required by the backend, <code>robots_serial_number</code>, <code>command_id</code>, <code>status</code>, and <code>battery_level</code>.
+</p>
+</div>
+
+<div id="outline-container-org577d384" class="outline-5">
+<h5 id="org577d384">Flow of the Polling Routine</h5>
+<div class="outline-text-5" id="text-org577d384">
+<p>
+Below is a very high level description of the flow of the <code>poll</code> routines:
+</p>
+<ol class="org-ol">
+<li>The robot sends a <code>HTTP</code> request to the <code>/poll</code> endpoint</li>
+<li>Update the status of the robot in the database
+<ul class="org-ul">
+<li>This is done to allow the web interface to immediately see the latest infomation about their device</li>
+</ul></li>
+<li>Check the battery level of the robot
+<ul class="org-ul">
+<li>If the value is below some predetermined value we need to <code>Abort(AbortReason::LowBattery)</code></li>
+</ul></li>
+<li>We need to now process the correspond <code>Command</code> for this <code>Poll</code>
+<ul class="org-ul">
+<li>The <code>Command</code> is retrieved from the database by the <code>command_id</code></li>
+</ul></li>
+<li>Return this response to the robot.</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3c32172" class="outline-4">
+<h4 id="org3c32172">Static File Service</h4>
+<div class="outline-text-4" id="text-org3c32172">
+<p>
+Another essential service that the backend provides is a basic static file server, this is used to host the frontend static assets. Simply any file in the <code>static</code> directory will be served under the <code>/static</code> path.
+</p>
+
+<p>
+The other potential approach for this would have been to introduce another container, possibly using the <a href="https://hub.docker.com/_/nginx">NGINX Image</a>, to serve the content.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf7b55cf" class="outline-3">
+<h3 id="orgf7b55cf">Interesting Implementation Details</h3>
+<div class="outline-text-3" id="text-orgf7b55cf">
+</div>
+<div id="outline-container-org30294ba" class="outline-4">
+<h4 id="org30294ba">Rust</h4>
+<div class="outline-text-4" id="text-org30294ba">
+</div>
+<div id="outline-container-org9779afa" class="outline-5">
+<h5 id="org9779afa">Module System</h5>
+<div class="outline-text-5" id="text-org9779afa">
+<p>
+Each service of the system provides is written as a separate module allowing for the system to be easily extended with additional functionality in the future, whilst maintaining a strict distinction between their functionality.
+</p>
+
+<p>
+After the Rust 2018 module system revamp, the module system is very intuitive and very flexible, allowing me to design the architecture of the code as I see fit.
+</p>
+</div>
+</div>
+<div id="outline-container-org36b956c" class="outline-5">
+<h5 id="org36b956c">Performance &amp; Safety <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></h5>
+<div class="outline-text-5" id="text-org36b956c">
+<p>
+Rust is blazingly fast and memory-efficient: with no runtime or garbage collector, it can power performance-critical services, run on embedded devices, and easily integrate with other languages.
+</p>
+
+<p>
+Rust’s rich type system and ownership model guarantee memory-safety and thread-safety — enabling you to eliminate many classes of bugs at compile-time.
+</p>
+</div>
+</div>
+<div id="outline-container-org0228982" class="outline-5">
+<h5 id="org0228982">Recoverable Errors</h5>
+<div class="outline-text-5" id="text-org0228982">
+<p>
+Idiomatic Rust code uses the <code>Result&lt;T,E&gt;</code> type, to show that a function that would usually return a value of type <code>T</code>, may fail and produce an error of type <code>E</code>.  I have create a custom error type for the backend system, encoding all of the possible errors.
+</p>
+
+<p>
+I have then implemented the  <code>From&lt;ApiError&gt;</code> trait for the <code>HttpResponse</code> type, meaning that the error type can be propagated call stack and be returned as a <code>HttpResponse</code>, with an appropriate <code>HTTP Status Code</code> and description of the error.
+The conversion is handled automatically by the try operator (<code>?</code>), which is really nice!
+</p>
+</div>
+</div>
+<div id="outline-container-orgd00411e" class="outline-5">
+<h5 id="orgd00411e">Asynchronous</h5>
+<div class="outline-text-5" id="text-orgd00411e">
+<p>
+The backend system is fully asynchronous and is using the newly stabilised <code>async/await</code> syntax, along with the <code>Tokio</code> executor that comes with <code>Actix Web</code>.
+</p>
+
+<p>
+The database for the backend supports concurrent access, therefore we need to take advantage of this potential performing boost.
+Since a database operation will take multiple magnitudes more time than standard computation, we can perform other tasks whilst waiting for the <code>Future</code> to yield its value.
+This is one of the reasons the backend system has such great performance characteristics.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9c9df34" class="outline-4">
+<h4 id="org9c9df34"><code>FromRequest</code> Trait Implementations</h4>
+<div class="outline-text-4" id="text-org9c9df34">
+<p>
+The <a href="#org4efd1fd"><code>Auth</code> Endpoint</a> utilises the <code>FromRequest</code> trait <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> to encapsulate all of the authentication and authorisation logic, essentially acting as <code>middleware</code> to the request <code>handler</code> by simply giving the user access to a <code>User</code> struct, containing all of the relevant information for that user.
+</p>
+
+<p>
+A <code>FromRequest</code> implementation can mutably access a <code>HttpRequest</code>, allowing the header of the request to be parsed, in our case we utilise the <code>Authorisation</code> header to provide the token to the backend.
+If the token is valid the appropriate users information will be fetched and returned to the <code>handler</code>, so the request can be appropriately serviced - this ensures that a user cannot execute commands for another user.
+On the other hand, if the backend was unable to validate the tokens value then the service will immediately return a <code>401 Unauthorized</code> error response.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://www.rust-lang.org/">https://www.rust-lang.org/</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">A Trait is a specific Rust language feature, which can be throught of in a similar way to a Haskell type class</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Kyle Cotton</p>
+<p class="date">Created: 2021-03-30 Tue 19:33</p>
+</div>
+</body>
+</html>
