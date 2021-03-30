@@ -12,6 +12,7 @@ font-family: Verdana, Arial, Helvetica, sans-serif;
 font-size: 12px;
 line-height: 18px;
 color: #080032;;
+overflow-x: hidden; /** To be modified with better layout **/
 }
 
 img { border: none; }
@@ -20,7 +21,7 @@ a:hover { text-decoration: underline; color : #000; }
 
 #wrap {
 margin: 0 auto;
-width: 800px;
+width: 100vw;
 }
 
 #header { 
@@ -53,6 +54,7 @@ p {
 }
 
 #menu {
+  width: 100vw;
 height: 40px;
 line-height: 40px;
 background: #57626a url(images/menu.jpg) no-repeat;
@@ -101,8 +103,12 @@ ul#menu .actif, ul#menu .actif:hover, ul#menu .actif:active {
 
 }
 
+#corps_central {
+  margin: 8px 0px;
+}
+
 #content {
-padding: 10px 20px;
+  margin: 0px 16px;
 }
 
 #tab {
@@ -165,13 +171,15 @@ font-weight: 600;
 .left a { text-decoration: none }
 
 #footer {
+  width: 95vw;
+  margin: 0px auto;
 background: #eee;
 border-top: 3px solid #57626a;
 margin-top: 20px;
 text-align: center;
 color: #333;
 font-size: 11px;
-padding: 10px;
+
 }
 
 table{
