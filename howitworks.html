@@ -242,6 +242,11 @@
           </section>
           <section>
             <h1>Navigation</h1>
+            <p> The navigation algorithm is simple: the robot is given a list of (x,y) points in the court’s reference system - the points are determined from the position of the ArUco markers. 
+            Claynce knows its position on the court, and hence is able to travel to the first point on the list. Once it’s in range of that point, the list will be updated to remove it, and the robot will look at the next point to check by how much it needs to turn to reach it.
+            This approach allows Claynce to navigate to literally any point from the list, as long as it knows its position correctly. This makes the algorithm very versatile, although right now we’re not using it to full potential - the web application allows you to choose one of two predefined patterns (either a zigzag one, or a circular one).
+
+            </p>
           </section>
         </div>
         <div style="clear: both"></div>
