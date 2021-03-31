@@ -1,24 +1,6 @@
 #+OPTIONS: H:6
 #+OPTIONS: num:nil
 #+OPTIONS: toc:nil
-* Introduction
-Clayanse is a complex system comprising of three essential parts.
-The first part of the system is the web interface, this how the user controls the robot,
-secondly we have the robot itself, which actually provides the cleaning service,
-finally, at the heart of the system we have the backend, responsible for enabling communication between the web interface and the robot.
-
-* Web Interface
-The web interface we have provided allows the user to interact with the robot, by calling the REST API endpoints provided by the backend.
-
-#+begin_src text
-TODO: Lucia/Justin to add some specifics
-#+end_src
-
-* Clayanse Robot
-#+begin_src text
-TODO: Konrad to add some details
-#+end_src
-
 * Backend
 ** Overview
 One of the most essential aspects of the project is the connection between the backend server and the web interface and robot.
