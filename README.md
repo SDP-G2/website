@@ -1,1 +1,1 @@
-# website
+This Bootstrap-based template website contains a MIT license.
