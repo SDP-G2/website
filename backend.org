@@ -1,29 +1,13 @@
 #+OPTIONS: H:6
 #+OPTIONS: num:nil
 #+OPTIONS: toc:nil
-* Introduction
-Clayanse is a complex system comprising of three essential parts.
-The first part of the system is the web interface, this how the user controls the robot,
-secondly we have the robot itself, which actually provides the cleaning service,
-finally, at the heart of the system we have the backend, responsible for enabling communication between the web interface and the robot.
-
-* Web Interface
-The web interface we have provided allows the user to interact with the robot, by calling the REST API endpoints provided by the backend.
-
-#+begin_src text
-TODO: Lucia/Justin to add some specifics
-#+end_src
-
-* Clayanse Robot
-#+begin_src text
-TODO: Konrad to add some details
-#+end_src
-
 * Backend
 ** Overview
 One of the most essential aspects of the project is the connection between the backend server and the web interface and robot.
 
 In order to support the operation of the robot and the web interface the backend system provides a myriad of services, which are secure, highly performant, and extensible.
+
+[[./assets/img/sdp_flowchart.png]]
 
 ** Rationale
 *** Architecture
@@ -48,7 +32,7 @@ Therefore it was decided that a REST API using the standard ~HTTP~ methods for i
 **** Scaling
 This allows each instance of our backend to run independently of each other in the case we need to scale the application, it is as simple as increasing the number of instances in the swarm manager (Docker Swarm, Kubernetes).
 **** Deployment
-The deployment of our applications is far simpler, in order to run the backend system it will be as simple as running the image on the server, again using the ~Makefile~, the devops engineer would only have to run the `make` command.
+The deployment of our applications is far simpler, in order to run the backend system it will be as simple as running the image on the server, again using the ~Makefile~, the devops engineer would only have to run the ~make~ command.
 Equally this could be done by a CI/CD pipeline.
 
 Other cloud providers such as Google Cloud Run & AWS Lambda have the ability to upload an image directly and have it run. This has the advantage of not having to manage infrastructure and have the ability to scale to demand, spinning down to zero when not in use. This is a very efficient use of compute.

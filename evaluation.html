@@ -1,191 +1,268 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head>
-<title>Claynce - SDP Group 2</title>	
-<meta http-equiv="Content-Language" content="English" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <title>Claynce - SDP Group #2</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="vendors/animate-css/animate.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
 
-<!-- Default CSS file -->
-<link rel="stylesheet" type="text/css" href="assets/css/style.css" media="screen" />
+    <!-- Konrad Hardcore Styles-->
+  <style>
+    .centeredBlock {
+      display: block; 
+      margin-left: auto; 
+      margin-right: auto;
+    }
+    </style>
 
-<!-- Justin Manual CSS -->
-<link rel="stylesheet" type="text/css" href="assets/css/justin-style.css"/>
+    <!-- Customized CSS -->
+    <link rel="stylesheet" href="css/sdp-customized/customized.css">
+</head>
+<body>
 
-<!-- Konrad Hardcore Styles-->
-<style>
-  .centeredBlock {
-    display: block; 
-    margin-left: auto; 
-    margin-right: auto;
-  }
-  </style>
+    <!--================Header Menu Area =================-->
+    <header class="header_area">	
+      <div class="main_menu">
+          <nav class="navbar navbar-expand-lg navbar-light">
+              <div class="container">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <h1 id="claynce-header-text">Claynce</h1>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <!-- Collect the nav links, forms, and other content for toggling -->
+                  <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                      <ul class="nav navbar-nav menu_nav ml-auto">
+                          <li class="nav-item"><a class="nav-link" href="index.html">WELCOME</a></li> 
+                          <li class="nav-item"><a class="nav-link" href="system.html">SYSTEM</a></li> 
+                          <li class="nav-item submenu dropdown">
+                              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" 
+                              aria-haspopup="true" aria-expanded="false">HOW IT WORKS</a>
+                              <ul class="dropdown-menu">
+                                  <li class="nav-item"><a class="nav-link" href="overview.html">Overview</a></li> 
+                                  <li class="nav-item"><a class="nav-link" href="frontend.html">Front-End</a></li> 
+                                  <li class="nav-item"><a class="nav-link" href="backend.html">Back-End</a></li>
+                                  <li class="nav-item"><a class="nav-link" href="robot.html">Robot</a></li>
+                              </ul>
+                          </li>
+                          <li class="nav-item"><a class="nav-link" href="evaluation.html">EVALUATION</a></li>     
+                          <li class="nav-item"><a class="nav-link" href="budget.html">BUDGET</a></li>
+                          <li class="nav-item"><a class="nav-link" href="team.html">TEAM</a></li>     
+                      </ul>
+                  </div>
+              </div>
+          </nav>
+      </div>
+  </header>
+  <!--================Header Menu Area =================-->
 
-<!-- Following third party modules are MIT licensed -->
 
-<!-- Google Fonts -->
-<link
-href="https://fonts.googleapis.com/css?family=Nunito|Oswald:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-rel="stylesheet">
+    <!--================Hero Banner Area Start =================-->
+    <section class="hero-banner d-flex align-items-center">
+        <div class="container text-center">
+            <h2>How Claynce Works</h2>
+        </div>
+    </section>
+    <!--================Hero Banner Area End =================-->
 
-<!-- BootStrap - online version -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
-integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!--================Evaluation Introduction Start =================-->
+    <section class="sample-text-area">
+        <div class="container">
+          <h3 class="text-heading title_color">How Well does Our System Perform</h3>
+          <p class="sample-text">
+              The following section here shall address the intensive and in-depth usability and evaluation testing conducted.
+          </p>
 
-<!-- TODO: BootStrap - required to integrate offline usage later -->
 
-
-<body><div id="wrap">	<div id="header">		
-    <h1 class="header-text"><a href="#">Claynce - SDP Group #2</a></h1>	
-    	<h2 class="sub-header-text">A truly revolutionary tennis-court cleaning robot</h2>	</div>	<div id="menu">	
-            <ul>
-                <li class="link" id="welcome.html"   > <a href="./index.html"     >Welcome     </a></li>			
-                <li class="link" id="system.html"    > <a href="./system.html"    >System      </a></li>	
-                <li class="link" id="howitworks.html"> <a href="./howitworks.html">How it works</a></li>				
-                <li class="link" id="evaluation.html"> <a href="./evaluation.html">Evaluation  </a></li>	
-                <li class="link" id="budget.html"    > <a href="./budget.html"    >Budget      </a></li> 		
-                <li class="link" id="team.html"      > <a href="./team.html"      >Team        </a></li>					
-            </ul>
-            </div>	
-            <div id="content">
-			<div id="corps_central"> 
-				
-            <h1 id="overall-system-text">How Well Does Our System Perform?</h1>
-            <p>Suggested Font: Oswald for headers, Nunito for sub-headers and paragraphs to match with web application design.<br>
-            In addition: Color Palette: Primary color - #002B53 and Secondary color - #4e73df</p>
-            
+          <div id="evaluation-section"> 
+				            
             <h2><a href="#tests">Evaluation Tests</a></h2>
-			<p>
-        Show the results of testing where available. This can include tables, graphs, videos etc. Be careful to present data in an appropriate manner and be clear about the conclusions drawn from whatever it is you present
-      </p>    
-      <div>
-        <h3>Visual Localization Tests</h3>
-        <h5>Purpose</h5>
-        <p>
-          The purpose of this test was to determine the accuracy of the primary localization system used by our robot.
-        </p>
-        <h5>Method</h5>
-        <p>
-          To determine efficiency of ArUco localisation testing was conducted independently of other localisation methods. 50x50cm ArUco tag was put at the origin of the world, facing y-axis. Robot facing the opposite of y-axis was put in 16,922 different positions along lines x=[-3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3] (all values are in meters).
-          At each position, the distance between actual position and the estimated position (error) was measured. The resulting error heatmap is presented below.
-        </p>
-        <figure>
-          <img class="centeredBlock" src="resources/imgs/aruco_qa.png" />
-        </figure>
-        <h5>Result Interpretation</h5>
-        <p>
-          Not surprisingly, the closer robot is to the marker, the more accurate is its estimate. This has a crucial importance for determining the effective range for marker detection. 
-          Technically, we could detect the marker from a big distance (e.g. 11 meters), but this test tells us that estimate based on such marker is likely to be inaccurate.
-        </p>
-        <p>
-          Moreover, position estimates tend to be more accurate when robot sees the marker at an angle rather than when the marker is facing the camera.
-        </p>
-        <p>
-          This knowledge resulted in a improved design of the robot. We maximised the ArUco detection range by rotating fron cameras of the robot by 30 degres. At the same time, we limitted the detection range for the rear camera to guarantee that the estimates before entering the blindzone are accurate.  
-        </p>
-      </div>
-
-      <div>
-        <h3>Hardware-Backend Integration Tests</h3>
-        <h5>Purpose</h5>
-        <p>
-          Main purpose of the hardware-backend integration tests is to determine whether the robot's controller is able to correctly manage various states of the of the robot, execute (or not) commands in given states, fetch tasks from the server, and update the database with the current state of the task.
-          It is especiallly important as many subsystems have to properly cooperate in order to carry out specifc task. What is more, robot states are more fine grained than state of the tasks that are store in the server, so the synchronisation between the robot and the server has to occur in specific order and at specific phases of command execution.
-        </p>
-        <h5>Method</h5>
-        <p>
-          Hardware modules integration has been evaluated by executing different scenarios and measuring in how many trials the system behaves as expected. The following scenarios have been tested:
-        </p>
-        <ol>
-          <li>Robot shuts down after it receives Abort Safety command in Idle state</li>
-          <li>Robot shuts down after it receives Abort LowBattery command in Idle state</li>
-          <li>Robot executes ZigZag Task</li>
-          <li>Robot does not execute issued Circular Task while executing ZigZag Task</li>
-          <li>Robot does not shut down when it receives Abort LowBattery Command during cleaning task</li>
-          <li>Robot shuts down when when it receives Abort Safety Command during cleaning task</li>
-          <li>Robot performs Circular task that is scheduled in the future at the appropriate time</li>
-        </ol>
-        <h5>Results and Interpretation</h5>
-        <p>
-          We have executed each scenario 5 times with a 100% success rate. The system behaving as expected in each test case gave us confidence that the subsystems has been integrated correctly.
-        </p>
-      </div>
-      <div>
-        <h3>Measuring Pattern Execution Time</h3>
-        <p>
-          Measuring the actual time of the program execution turned out to be a difficult task. We had only one machine capable of running the simulation and in that machine the simulation rate oscillated around 0.05-0.10x the actual time. Meaning that it took from 10 to 20 seconds for 1 second to pass in the simulation.
-          For that reason we had to make some "smart" estimates regarding the execution times of our patterns, as it was infeasible to carry out multiple trials using full setup.
-        </p>
-        <p>
-          We decided to measure how much time it takes to move the robot from point A on the one side of the court to point B on the other side of the court in a straight line fashion. 
-          We compared the results for two cases: 
-        </p>
-        <ol>
-          <li>the robot blindly moved from A to B</li>
-          <li>the robot used our navigation module that utilises odometry and ArUco navigation</li>
-        </ol>
-        <p>
-          Not surprisingly, the second case took longer than the first one. On average by 19%. There are two main reasons for that. 
-          Firstly, when using ArUco navigation there is some "jerky" motion caused by the inaccuarate pose estimation making the robot adjust it's pose.
-          Secondly, due to drag and direction estimation inaccuracy. Robot does not move in a straight line, rather than a curve.  
-        </p>
-        <p>
-          Knowning that, we run the simulation without using the ArUco navigation which speeded up the simulation to bearable time. In such circumstances, we achieved following results:
-        </p>
-        <table>
-          <tr>
-            <th>Pattern Type</th>
-            <th>Repetitions</th>
-            <th>(Min - Max) Running Time w/o. ArUco localization</th>
-            <th>Estimated (Min - Max) Running Time w. ArUco localization</th>
-          </tr>
-          <tr>
-            <td>Zig-Zag</td>
-            <td>10</td>
-            <td>9m 28s - 10m 6s</td>
-            <td>11m 16s - 12m 1s</td>
-          </tr>
-          <tr>
-            <td>Circular</td>
-            <td>10</td>
-            <td>23m 13s - 23m 41s</td>
-            <td>27m 38 - 28m 11s</td>
-          </tr>
-        </table>
-        <p>
-          We find the estimated times to be within acceptable range. Zig-Zag pattern which lasts almost 12 minutes falls little behind the time it takes for an average person to sweep the court (from our research it is around 5 minutes per half).
-          For the circular pattern this time is over 2 times longer, but at the same time circular traverses the same leg two times. However, due to its duration, we don't expect people using it midgame. It would rather act as a start/end of day court maintenance program.
-          It is important to stress the fact that the exact time results heavily depends on the configuration of the cleaning patterns. As the choice of parameters for pattern generation might differ between users.
-        </p>
-        <p>
-          Despite Claynce being slower than human player, these 10 minutes are freed for players / court maintainers. In this time they can warm-up, stretch, rest, talk with the partner, or clean up different parts of the court.  
-          Additionally.
-        </p>
-      </div>
-      <!-- <div>
-        <h3>Evaluating current Claynce perfomance</h3></h3>
-        <p>
-          In order to evaluate Claynce performance, we had to shrink the cleaning area, so the simulations could run in a reasonable time.
-          We decided to use the robot on a area up to 3 meters away from the net, so we could also verify that changing sides of the court works as expected.
-        </p>
+            <p>Show the results of testing where available. This can include tables, 
+              graphs, videos etc. Be careful to present data in an appropriate manner and be 
+              clear about the conclusions drawn from whatever it is you present</p>    
+            
+              <div>
+                <h3>Visual Localization Tests</h3>
+                <h5>Purpose</h5>
+                <p>
+                  The purpose of this test was to determine the accuracy of the primary localization system used by our robot.
+                </p>
+                <h5>Method</h5>
+                <p>
+                  To determine efficiency of ArUco localisation testing was conducted independently of other localisation methods. 50x50cm ArUco tag was put at the origin of the world, facing y-axis. Robot facing the opposite of y-axis was put in 16,922 different positions along lines x=[-3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3] (all values are in meters).
+                  At each position, the distance between actual position and the estimated position (error) was measured. The resulting error heatmap is presented below.
+                </p>
+                <figure>
+                  <img class="centeredBlock" src="resources/imgs/aruco_qa.png" />
+                </figure>
+                <h5>Result Interpretation</h5>
+                <p>
+                  Not surprisingly, the closer robot is to the marker, the more accurate is its estimate. This has a crucial importance for determining the effective range for marker detection. 
+                  Technically, we could detect the marker from a big distance (e.g. 11 meters), but this test tells us that estimate based on such marker is likely to be inaccurate.
+                </p>
+                <p>
+                  Moreover, position estimates tend to be more accurate when robot sees the marker at an angle rather than when the marker is facing the camera.
+                </p>
+                <p>
+                  This knowledge resulted in a improved design of the robot. We maximised the ArUco detection range by rotating fron cameras of the robot by 30 degres. At the same time, we limitted the detection range for the rear camera to guarantee that the estimates before entering the blindzone are accurate.  
+                </p>
+              </div>
         
-      </div> -->
+              <div>
+                <h3>Hardware-Backend Integration Tests</h3>
+                <h5>Purpose</h5>
+                <p>
+                  Main purpose of the hardware-backend integration tests is to determine whether the robot's controller is able to correctly manage various states of the of the robot, execute (or not) commands in given states, fetch tasks from the server, and update the database with the current state of the task.
+                  It is especiallly important as many subsystems have to properly cooperate in order to carry out specifc task. What is more, robot states are more fine grained than state of the tasks that are store in the server, so the synchronisation between the robot and the server has to occur in specific order and at specific phases of command execution.
+                </p>
+                <h5>Method</h5>
+                <p>
+                  Hardware modules integration has been evaluated by executing different scenarios and measuring in how many trials the system behaves as expected. The following scenarios have been tested:
+                </p>
+                <ol>
+                  <li>Robot shuts down after it receives Abort Safety command in Idle state</li>
+                  <li>Robot shuts down after it receives Abort LowBattery command in Idle state</li>
+                  <li>Robot executes ZigZag Task</li>
+                  <li>Robot does not execute issued Circular Task while executing ZigZag Task</li>
+                  <li>Robot does not shut down when it receives Abort LowBattery Command during cleaning task</li>
+                  <li>Robot shuts down when when it receives Abort Safety Command during cleaning task</li>
+                  <li>Robot performs Circular task that is scheduled in the future at the appropriate time</li>
+                </ol>
+                <h5>Results and Interpretation</h5>
+                <p>
+                  We have executed each scenario 5 times with a 100% success rate. The system behaving as expected in each test case gave us confidence that the subsystems has been integrated correctly.
+                </p>
+              </div>
+              <div>
+                <h3>Measuring Pattern Execution Time</h3>
+                <p>
+                  Measuring the actual time of the program execution turned out to be a difficult task. We had only one machine capable of running the simulation and in that machine the simulation rate oscillated around 0.05-0.10x the actual time. Meaning that it took from 10 to 20 seconds for 1 second to pass in the simulation.
+                  For that reason we had to make some "smart" estimates regarding the execution times of our patterns, as it was infeasible to carry out multiple trials using full setup.
+                </p>
+                <p>
+                  We decided to measure how much time it takes to move the robot from point A on the one side of the court to point B on the other side of the court in a straight line fashion. 
+                  We compared the results for two cases: 
+                </p>
+                <ol>
+                  <li>the robot blindly moved from A to B</li>
+                  <li>the robot used our navigation module that utilises odometry and ArUco navigation</li>
+                </ol>
+                <p>
+                  Not surprisingly, the second case took longer than the first one. On average by 19%. There are two main reasons for that. 
+                  Firstly, when using ArUco navigation there is some "jerky" motion caused by the inaccuarate pose estimation making the robot adjust it's pose.
+                  Secondly, due to drag and direction estimation inaccuracy. Robot does not move in a straight line, rather than a curve.  
+                </p>
+                <p>
+                  Knowning that, we run the simulation without using the ArUco navigation which speeded up the simulation to bearable time. In such circumstances, we achieved following results:
+                </p>
+                <table>
+                  <tr>
+                    <th>Pattern Type</th>
+                    <th>Repetitions</th>
+                    <th>(Min - Max) Running Time w/o. ArUco localization</th>
+                    <th>Estimated (Min - Max) Running Time w. ArUco localization</th>
+                  </tr>
+                  <tr>
+                    <td>Zig-Zag</td>
+                    <td>10</td>
+                    <td>9m 28s - 10m 6s</td>
+                    <td>11m 16s - 12m 1s</td>
+                  </tr>
+                  <tr>
+                    <td>Circular</td>
+                    <td>10</td>
+                    <td>23m 13s - 23m 41s</td>
+                    <td>27m 38 - 28m 11s</td>
+                  </tr>
+                </table>
+                <p>
+                  We find the estimated times to be within acceptable range. Zig-Zag pattern which lasts almost 12 minutes falls little behind the time it takes for an average person to sweep the court (from our research it is around 5 minutes per half).
+                  For the circular pattern this time is over 2 times longer, but at the same time circular traverses the same leg two times. However, due to its duration, we don't expect people using it midgame. It would rather act as a start/end of day court maintenance program.
+                  It is important to stress the fact that the exact time results heavily depends on the configuration of the cleaning patterns. As the choice of parameters for pattern generation might differ between users.
+                </p>
+                <p>
+                  Despite Claynce being slower than human player, these 10 minutes are freed for players / court maintainers. In this time they can warm-up, stretch, rest, talk with the partner, or clean up different parts of the court.  
+                  Additionally.
+                </p>
+              </div>
+              <!-- <div>
+                <h3>Evaluating current Claynce perfomance</h3></h3>
+                <p>
+                  In order to evaluate Claynce performance, we had to shrink the cleaning area, so the simulations could run in a reasonable time.
+                  We decided to use the robot on a area up to 3 meters away from the net, so we could also verify that changing sides of the court works as expected.
+                </p>
+                
+              </div> -->
+            
             <div id="user-tests-div">
                 <h3><a href="#usertests">Accessibility and Usability Tests</a></h3>
-                <h5>Testing Overview</h5>
+
+                <h5>User Interface Testing</h5>
                 <p>Our team truly believes in giving each user a rich experience to control their Claynce robot with greater ease.
-                    Accessibility and usability continues to remain as an important aspect of our project, 
-                    otherwise the user would ultimately not would want to use our product. 
-                    Therefore, our team has created an accessibility and usability questionnaire to further understand our users better.
-                    As our team’s Participant Information Sheets and consent forms met the SDP Ethics Committee’s standards, 
-                    our team has proceeded to collect 30 responses from SDP students and friends. 
-                    Our team believes in the integrity of input, and these individuals are useful sources, 
-                    because every individual plays a key role in helping our team continuously improve our user interface.</p>
+                  As accessibility and usability continue to remain as an important aspect of our project, 
+                  we would like to ensure our product meets the industry standards.</p>
+
+                <h5>Internal assessment</h5> 
+                <p>
+                  Our team has conducted an internal assessment to formally assess how perceivable, operable and understandable our
+                  our web application is. From our sheet, our team has conducted a quantitative analysis of
+                  the guidelines, where we have created a scoring guideline
+                  ranging from 0 to 3 for each attribute met. We have clearly
+                  identified our strengths and weaknesses to further improve
+                  our user interface and ultimately the web application.
+                  <br>
+                  An attribute requirement is met satisfactory if its score is 2
+                  or 3. 
+                  <ul>
+                    <li>The number of level A attributes met successfully is 10 out of 28.</li>
+                    <li>The number of level AA attributes met satisfactorily is 9 out 19.</li>
+                    <li>The number of level AAA attributes met expectations is 8 out of 28.</li>
+                  </ul>  
+                  Our team has additionally conducted a through analysis of the user interface using Google Developer Tools.
+                  Testing has also been done to ensure that the font size and
+                  styles remain consistent in the web application’s pages no
+                  matter the device and/or browser.
+                 <a href="assets/user-report/Accessibility _ Usability Testing - Sheet1.pdf">Userability Testing Results</a>
+
+                 </p>
+
+                 <div class="container">
+                   <div class="row">
+                     <div class="col-md-12">
+                       <img src="img/sdp-report/lighthouse-test.png" style="width: 90%; margin: 8px auto;">
+                     </div>
+                   </div>
+                 </div>
+
+
+
+
+                <h5>Questionnaire Overview</h5>
+                <p>Our team has additionally conducted an accessibility and usability questionnaire to further understand our users better.
+                   As our team’s Participant Information Sheets and consent forms met the SDP Ethics Committee’s standards, 
+                   our team has proceeded to collect 30 responses from SDP students and friends. 
+                  Our team believes in the integrity of input, and these individuals are useful sources, 
+                  because every individual plays a key role in helping our team continuously improve our user interface.</p>
                 
                 <div id="images-container" class="container">
                     <div class="row">
                         <div class="col-md-6" style="margin: 0px auto;">
-                            <img src="assets/img/usability_report_graph_img0.png" style="width: 100%;">
+                            <img src="img/sdp-report/usability_report_graph_img0.png" style="width: 100%;">
                         </div>
                         <div class="col-md-6">
-                            <img src="assets/img/usability_report_graph_img2.png" style="width: 100%; height: 98%;">
+                            <img src="img/sdp-report/usability_report_graph_img2.png" style="width: 100%; height: 98%;">
                         </div>
                     </div>    
                 </div>
@@ -242,34 +319,83 @@ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLP
                             <td>7.23 / 10</td>
                           </tr>
                         </tbody>
-                      </table>    
-                </div>
-            </div> 
-			
-			<h2><a href="#Diagrams">Main Areas of Improvement</a></h2>
+                    </table>    
+                  </div>
+
+                  <p>For more details, please refer to the following document:
+                    <a href="assets/user-report/Accessibility _ Usability Testing - Sheet1.pdf">Userability Testing Results</a></p>
+                                  
+            <h2><a href="#Diagrams">Main Areas of Improvement</a></h2>
             <h4>Evaluation</h4>		
-			<p>What did you learn from your testing? How did your evaluation/user testing change your system?</p>
-            <h4>Userability Testing</h4>
-            <p>The lessons learned from conducting userability testing have allowed our team to implement
-                more user-friendly features to ensure the colors of the web application match properly.
-                Features to assist end users with how things work, radio buttons for
-                clear command instructions, and activity logs as a management tool for the Claynce bot.
-                In addition, our team has ensured our specialized selection of visuals to ease the navigation
-                "learning-curve" of the user.</p>
+            <p>What did you learn from your testing? How did your evaluation/user testing change your system?</p>
+
+            <h4>Questionnaire Results</h4>
+            <p>Conducting usability testing has allowed our team to implement
+                      more user-friendly features to ensure the visualizations, such as the 
+                      colors of the web application match properly.
+                      Our team has implemented dedicated features to assist end users with how the system is displayed,
+                      radio buttons for clear command instructions, and activity logs as a management tool for the Claynce bot.
+                      In addition, our team has ensured our specialized selection of visuals to ease the navigation
+                      "learning-curve" of the user.</p>
 
             <h2>Resources</h2>
-            <p>Google Fonts, BootStrap etc</p>
+            <ol>
+              <li>Howe, Justin. "Accessibility and Usability Testing Document"</li> 
+              <li>Howe, Justin. "Userability Testing Results"</li> 
+              <li>All resources are conducted in MLA style.</li>
+            </ol>
+       
+            </div> 
 
-            </div>	
-            <div style="clear: both;"> </div>		
-            <div id="footer">
-                Page design based on a <a href="http://www.free-css-templates.com/">Free CSS Template</a>
-            </div>	
+      </div>
+
+
         </div>
-    </div>
+      </section>
+    <!--================Concept End =================-->
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <section class="sample-text-area">
+        <div class="container">
 
-</body></html>
+        </div>
+    </section>
+    
+
+
+
+    <!-- ================ Start footer Area ================= -->
+    <footer class="footer-area">
+        <div class="container">
+        <div class="footer-bottom row align-items-center text-center text-lg-left no-gutters">
+            <p class="footer-text m-0 col-lg-8 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            <div class="col-lg-4 col-md-12 text-center text-lg-right footer-social">
+                Creatively crafted by SDP Group #2
+            </div>
+        </div>
+        </div>
+    </footer>
+<!-- ================ End footer Area ================= -->
+
+
+
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/waypoints.min.js"></script>
+<script src="js/mail-script.js"></script>
+<script src="js/contact.js"></script>
+<script src="js/jquery.form.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/mail-script.js"></script>
+<script src="js/theme.js"></script>
+</body>
+</html>
