@@ -7,8 +7,8 @@
     <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
     <style>
       .centeredBlock {
-        display: block; 
-        margin-left: auto; 
+        display: block;
+        margin-left: auto;
         margin-right: auto;
       }
       </style>
@@ -48,6 +48,19 @@
             here
           </p>
 
+
+        <div id="outline-container-org4648a12" class="outline-2">
+        <h2 id="org4648a12">Introduction</h2>
+        <div class="outline-text-2" id="text-org4648a12">
+        <p>
+        Clayanse is a complex system comprising of three essential parts.
+        The first part of the system is the web interface, this how the user controls the robot,
+        secondly we have the robot itself, which actually provides the cleaning service,
+        finally, at the heart of the system we have the backend, responsible for enabling communication between the web interface and the robot.
+        </p>
+        </div>
+        </div>
+
           <h2><a href="#Methods">Methods</a></h2>
           <p>Explain the key methods of how you got your system to work</p>
 
@@ -58,14 +71,14 @@
             diagrams, images of your system in certain states etc.
           </p>
 
-          <h2><a href="system_overview.html">System Overview</a></h2>
-          Above is a overview of the entire system.
+          <h2><a href="backend.html">Backend System</a></h2>
+          Above is a overview of the backend system
 
           <section>
             <h1>Robot Localization Techniques</h1>
             <p>
               A tennis courts is a challenging environment from robot localization perspective.
-              There is a number of features that contribute to such state of things:              
+              There is a number of features that contribute to such state of things:
             </p>
             <ul>
               <li>Big area</li>
@@ -83,18 +96,18 @@
               <img src="/resources/imgs/aruco.png" class="centeredBlock" width="100" height="100"/>
               <figcaption style="text-align: center;">Sample ArUco marker (id: 23)</figcaption>
             </figure>
-            
+
             <p>
               Next sections provide more in-depth explanaition of the theoretical background and our implementation of those systems.
             </p>
-            
-            
+
+
             <h3>ArUco Visual Localization</h3>
-            
+
             <p>
-              The internal map of the environment consists of locations and poses of ArUco markers in the tennis court environment. 
-              Currently, the translation and orientation of markers, with respect to origin of the "world" coordinate system (center of the court), 
-              is determined during the system setup phase. 
+              The internal map of the environment consists of locations and poses of ArUco markers in the tennis court environment.
+              Currently, the translation and orientation of markers, with respect to origin of the "world" coordinate system (center of the court),
+              is determined during the system setup phase.
               The user places markers at known positions around the court and contacts our team specifying placement of the markers
               so we can send them Claynce with approprate court map preinstalled.
             </p>
@@ -112,7 +125,7 @@
             </uL>
             <img src="resources/imgs/aruco_layout.png" class="centeredBlock" />
 
-            <p>  
+            <p>
               This is a temporary solution implemented in the first prototype of Claynce that enabled us to create a proof of concept.
               In future development we would like to:
             </p>
@@ -122,7 +135,7 @@
               <li>Add many-to-many relationship between court maps and robots, so one robot could be used on multiple courts without the need of reconfiguration.</li>
             </ol>
             <p>
-              Going back to what we currently have, the translation and rotation of each marker is hardcoded in robot's software. 
+              Going back to what we currently have, the translation and rotation of each marker is hardcoded in robot's software.
               Each ArUco marker has a unique ID with which its positions is associated and published as a static transform from the world coordinate frame to the coordinate system of the ArUco marker.
             </p>
 
@@ -131,34 +144,34 @@
               For that, we use 3 Full HD Raspbery Pi cameras. Higher resolution helps us to more accurately determine the position of the robot with respect to the marker.
               We are willing to sacrifice the higher ratecenteredImg of pose estimations due to higher resolution, as the frequency is not as crucial when we have 3 cameras working simultaneously.
             </p>
-            <p>  
-              In our setup, two cameras are facing forward and are rotated by 30 degrees to the left and right. 
+            <p>
+              In our setup, two cameras are facing forward and are rotated by 30 degrees to the left and right.
               Such configuration allows us to reliably detect markers when moving towards markers and/or in parallel to them.
               One camera at the back is responsible for detecting markers when moving away from the markers.
             </p>
             <p>
-              Because it turns out that detecting markers which are at the angle with respect to the camera gives better results. 
-              The range of marker detection of front cameras is set to 9 meteres, 
+              Because it turns out that detecting markers which are at the angle with respect to the camera gives better results.
+              The range of marker detection of front cameras is set to 9 meteres,
               whilst the rear one is limited to 5 meters only.
               The values has been set based on the results of our tests, that are presented in the <a href="evaluation.html">Evaluation page</a>.
               This way, the position estimation error should not exceed 50 centimeters.
             </p>
 
             <p>
-              For the visual localisation to work, camera information and raw images are published by the device manager from ROSification library provided by Webots. 
-              The Image messages are published over a topic. 
-              A specialized node converts the messages to OpenCV frame using CvBridge tool. 
-              That frame is further processed (e.g. converting to greyscale), and ArUcos are detected. 
-              The process of marker recognition and camera -> marker transform computation is covered by OpenCV library. 
-              In the end, the frame is annotated with IDs of the markers and their bounding boxes. 
-              The modified frame is converted back to the Image message and published over a different topic for debugging purposes.            
+              For the visual localisation to work, camera information and raw images are published by the device manager from ROSification library provided by Webots.
+              The Image messages are published over a topic.
+              A specialized node converts the messages to OpenCV frame using CvBridge tool.
+              That frame is further processed (e.g. converting to greyscale), and ArUcos are detected.
+              The process of marker recognition and camera -> marker transform computation is covered by OpenCV library.
+              In the end, the frame is annotated with IDs of the markers and their bounding boxes.
+              The modified frame is converted back to the Image message and published over a different topic for debugging purposes.
             </p>
-            
+
             <figure>
               <img src="resources/imgs/detected_markers.png" class="centeredBlock"/>
               <figcaption style="text-align: center;">Example of marker detection. Four markers have been detected, but only three leftmost are within the range for pose estimation  .</figcaption>
             </figure>
-            
+
 
             <p>
               A brief overview of the implemented algorithm:
@@ -193,7 +206,7 @@
           <section>
             <h1>Odometry</h1>
             <p>
-              Because of the way the cameras are placed and configured, 
+              Because of the way the cameras are placed and configured,
               there is a "blindzone" on the court in which the robot cannot determine its position from the ArUco markers.
               This happens because markers on both sides of the court are too far from the robot.
             </p>
@@ -207,7 +220,7 @@
               It's purpose is to get the robot through the blindzone until it can again reliably detect the markers on the other side of the court.
             </p>
             <p>
-              Odometry has been implemated based on the <a href="https://www.hmc.edu/lair/ARW/ARW-Lecture01-Odometry.pdf">"Odometry Kinematics"</a> slides from Harvey Mudd College. The main parameters: wheel radius and wheel gap, have been tuned using experimnetal approach. 
+              Odometry has been implemated based on the <a href="https://www.hmc.edu/lair/ARW/ARW-Lecture01-Odometry.pdf">"Odometry Kinematics"</a> slides from Harvey Mudd College. The main parameters: wheel radius and wheel gap, have been tuned using experimnetal approach.
               Their final values vary significantly from "theoretical" ones. But they ensure that wheel encoder readings give reliable estimation for the forward motion and 90-degree turns. The tasks that are the most crucial for entering and leaving the blindzone.
               Below you can see that odometry does well when moving straigh and performing ~90-degree turns, but works much worse with other turns.
             </p>
@@ -219,12 +232,12 @@
           <section>
             <h1>Pattern Path Generation</h1>
             <p>
-              Currently Claynce supports 2 patterns: zig-zag and circular. A path that the robot has to follow in a selected sweeping program is generated in a recursive fashion. This makes it highly extensible to suit everyone's needs. The algorithm starts at the net and finshes at the end of the court. 
-              Path is generated for one half only and then the points for the other half are generated by reflecting existing path along the net. This ensures two things. 
+              Currently Claynce supports 2 patterns: zig-zag and circular. A path that the robot has to follow in a selected sweeping program is generated in a recursive fashion. This makes it highly extensible to suit everyone's needs. The algorithm starts at the net and finshes at the end of the court.
+              Path is generated for one half only and then the points for the other half are generated by reflecting existing path along the net. This ensures two things.
               Firstly, that the robot starts sweeping the second half on the same side that it finished cleaning the first one. Secondly, that the robot finishes the program on the opposite half and the same side of the court on which it started the pattern.
               Finally, the robot gets an instruction to come back to the net so the user can pick it up.
             </p>
-            <p> 
+            <p>
               Our algorithms are highly parametrised and very flexible to suite every user needs. Currently we have fixed parameters for pattern generation, but in the future we would like to expose those parameters via an app so users can create patterns that are adapted to their personal requirements.
               Regardles of the pattern, module generating paths takes into account:
             </p>
@@ -242,6 +255,30 @@
           </section>
           <section>
             <h1>Navigation</h1>
+            <p> The navigation algorithm is simple: the robot is given a list of (x,y) points in the court’s reference system - the points are determined from the position of the ArUco markers. 
+            Claynce knows its position on the court, and hence is able to travel to the first point on the list. Once it’s in range of that point, the list will be updated to remove it, and the robot will look at the next point to check by how much it needs to turn to reach it.
+            This approach allows Claynce to navigate to literally any point from the list, as long as it knows its position correctly. This makes the algorithm very versatile, although right now we’re not using it to full potential - the web application allows you to choose one of two predefined patterns (either a zigzag one, or a circular one).
+<p>While the robot is moving to the next point, it is possible for it to go off-track due to friction or sliding of the wheels or maybe something else. To remedy this, there exists an angle correction algorithm: given the location of the next point and the position of Claynce on the court, it’s possible to calculate the distance between them, as well as the angle of the direction of movement (with respect to the court’s reference frame). If this calculated angle is not the same as the angle at which the robot is travelling now, Claynce will adjust its wheel velocities to turn more to the side to face the destination straight on.
+For example, see this image:
+<figure>
+              <img src="/resources/imgs/angle-correction.jpg" class="centeredBlock" height="300px" />
+              <figcaption style="text-align: center;">When Claynce performs angle correction</figcaption>
+            </figure>
+The robot has not turned properly, meaning that the destination is not straight ahead. The algorithm calculates the angle of travel (from the set horizontal axis x) alpha, as well as the angle by how much the course needs to be adjusted (beta). 
+Using this information and basic trigonometry, the robot changes the velocities of the wheels so that it turns right until beta reaches almost zero - it will never exactly be zero, so some tolerance (0.1 degrees) is allowed. 
+After that it starts going straight again, because the destination is now right in front of it. This algorithm runs constantly, so the robot continuously compares the angles and adjusts its velocity if necessary.
+</p>
+            </p>
+            <p>
+            
+<b>Obstacle avoidance: </b>
+Claynce has three distance sensors on the front to allow it to detect obstacles. Given that there shouldn’t be any on the court during cleaning, it’s enough for the robot to simply stop in front of an obstacle and wait until it’s removed. 
+The distance sensors are placed in such a way as to detect the obstacles that are 40 cm in front, or a bit to the sides of the robot (the ones at the sides may stop the net from moving forward); hence one sensor points straight, while the other two are point at 15-degree angles from the robot’s centerline.
+ This short detection distance allows Claynce to stop in front of reasonably small obstacles, while ignoring the net poles or the walls of the court, which are usually farther away from it.
+
+            </p>
+              <!--  <video class="centeredBlock" width="420" height="480" controls style="margin-bottom: 40px;">
+              <source src="resources/videos/obst.mp4" type="video/mp4"> -->
           </section>
         </div>
         <div style="clear: both"></div>

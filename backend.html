@@ -1,290 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head>
-<!-- 2021-03-30 Tue 19:33 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
-<meta name="generator" content="Org mode" />
-<meta name="author" content="Kyle Cotton" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
-    padding: 3px;
-    border: 1px solid black;
-  }
-  pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Title</title>
+    <meta http-equiv="Content-Language" content="English" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <style>
+      .centeredBlock {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      </style>
+  </head>
 
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .equation-container {
-    display: table;
-    text-align: center;
-    width: 100%;
-  }
-  .equation {
-    vertical-align: middle;
-  }
-  .equation-label {
-    display: table-cell;
-    text-align: right;
-    vertical-align: middle;
-  }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
-</style>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-</head>
-<body>
+  <body>
+    <div id="wrap">
+      <div id="header">
+        <h1><a href="#">Claynce (Group 2)</a></h1>
+        <h2>Group subtitle</h2>
+      </div>
+      <div id="menu">
+        <ul>
+          <li class="link" id="welcome.html">
+            <a href="./index.html">Welcome </a>
+          </li>
+          <li class="link" id="system.html">
+            <a href="./system.html">System </a>
+          </li>
+          <li class="link" id="howitworks.html">
+            <a href="./howitworks.html">How it works</a>
+          </li>
+          <li class="link" id="evaluation.html">
+            <a href="./evaluation.html">Evaluation </a>
+          </li>
+          <li class="link" id="budget.html">
+            <a href="./budget.html">Budget </a>
+          </li>
+          <li class="link" id="team.html"><a href="./team.html">Team </a></li>
+        </ul>
+      </div>
 <div id="content">
-<div id="outline-container-org4648a12" class="outline-2">
-<h2 id="org4648a12">Introduction</h2>
-<div class="outline-text-2" id="text-org4648a12">
-<p>
-Clayanse is a complex system comprising of three essential parts.
-The first part of the system is the web interface, this how the user controls the robot,
-secondly we have the robot itself, which actually provides the cleaning service,
-finally, at the heart of the system we have the backend, responsible for enabling communication between the web interface and the robot.
-</p>
+<div id="outline-container-orgcfe32e5" class="outline-2">
+<h2 id="orgcfe32e5">Backend</h2>
+<div class="outline-text-2" id="text-orgcfe32e5">
 </div>
-</div>
-
-<div id="outline-container-org701c513" class="outline-2">
-<h2 id="org701c513">Web Interface</h2>
-<div class="outline-text-2" id="text-org701c513">
-<p>
-The web interface we have provided allows the user to interact with the robot, by calling the REST API endpoints provided by the backend.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-text">TODO: Lucia/Justin to add some specifics
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org99d31f3" class="outline-2">
-<h2 id="org99d31f3">Clayanse Robot</h2>
-<div class="outline-text-2" id="text-org99d31f3">
-<div class="org-src-container">
-<pre class="src src-text">TODO: Konrad to add some details
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org21fd66c" class="outline-2">
-<h2 id="org21fd66c">Backend</h2>
-<div class="outline-text-2" id="text-org21fd66c">
-</div>
-<div id="outline-container-org230ce0e" class="outline-3">
-<h3 id="org230ce0e">Overview</h3>
-<div class="outline-text-3" id="text-org230ce0e">
+<div id="outline-container-orgaf87538" class="outline-3">
+<h3 id="orgaf87538">Overview</h3>
+<div class="outline-text-3" id="text-orgaf87538">
 <p>
 One of the most essential aspects of the project is the connection between the backend server and the web interface and robot.
 </p>
@@ -292,16 +55,22 @@ One of the most essential aspects of the project is the connection between the b
 <p>
 In order to support the operation of the robot and the web interface the backend system provides a myriad of services, which are secure, highly performant, and extensible.
 </p>
+
+
+<div class="figure">
+<p><img src="./assets/img/sdp_flowchart.png" alt="sdp_flowchart.png" />
+</p>
+</div>
 </div>
 </div>
 
-<div id="outline-container-orgc7f4be4" class="outline-3">
-<h3 id="orgc7f4be4">Rationale</h3>
-<div class="outline-text-3" id="text-orgc7f4be4">
+<div id="outline-container-org6911281" class="outline-3">
+<h3 id="org6911281">Rationale</h3>
+<div class="outline-text-3" id="text-org6911281">
 </div>
-<div id="outline-container-orgc6feb44" class="outline-4">
-<h4 id="orgc6feb44">Architecture</h4>
-<div class="outline-text-4" id="text-orgc6feb44">
+<div id="outline-container-org85a7f56" class="outline-4">
+<h4 id="org85a7f56">Architecture</h4>
+<div class="outline-text-4" id="text-org85a7f56">
 <p>
 Having a centralised C2 (Command &amp; Control Server) allows for greater simplification and de-duplication of functionality across the various controlling entities that could be employed in the future, in addition to the Web Application that is currently in development. Any system that is capable of consuming the Claynse REST API (Representational State Transfer Application Program Interface) will be able to issue commands to the robot.
 </p>
@@ -321,9 +90,9 @@ This abstracts substantial complexity for the hardware team: not only would this
 </div>
 </div>
 
-<div id="outline-container-org3df3b9b" class="outline-4">
-<h4 id="org3df3b9b">REST API</h4>
-<div class="outline-text-4" id="text-org3df3b9b">
+<div id="outline-container-org38b3726" class="outline-4">
+<h4 id="org38b3726">REST API</h4>
+<div class="outline-text-4" id="text-org38b3726">
 <p>
 It was decided that a REST API would be the best method of communication, there were a few reasons for this.
 </p>
@@ -341,23 +110,23 @@ Therefore it was decided that a REST API using the standard <code>HTTP</code> me
 </p>
 </div>
 </div>
-<div id="outline-container-orge0f2093" class="outline-4">
-<h4 id="orge0f2093">Dockerized Application</h4>
-<div class="outline-text-4" id="text-orge0f2093">
+<div id="outline-container-org1f31c0d" class="outline-4">
+<h4 id="org1f31c0d">Dockerized Application</h4>
+<div class="outline-text-4" id="text-org1f31c0d">
 </div>
-<div id="outline-container-org24639a3" class="outline-5">
-<h5 id="org24639a3">Scaling</h5>
-<div class="outline-text-5" id="text-org24639a3">
+<div id="outline-container-org1cd76e9" class="outline-5">
+<h5 id="org1cd76e9">Scaling</h5>
+<div class="outline-text-5" id="text-org1cd76e9">
 <p>
 This allows each instance of our backend to run independently of each other in the case we need to scale the application, it is as simple as increasing the number of instances in the swarm manager (Docker Swarm, Kubernetes).
 </p>
 </div>
 </div>
-<div id="outline-container-orgc353034" class="outline-5">
-<h5 id="orgc353034">Deployment</h5>
-<div class="outline-text-5" id="text-orgc353034">
+<div id="outline-container-org08565ca" class="outline-5">
+<h5 id="org08565ca">Deployment</h5>
+<div class="outline-text-5" id="text-org08565ca">
 <p>
-The deployment of our applications is far simpler, in order to run the backend system it will be as simple as running the image on the server, again using the <code>Makefile</code>, the devops engineer would only have to run the `make` command.
+The deployment of our applications is far simpler, in order to run the backend system it will be as simple as running the image on the server, again using the <code>Makefile</code>, the devops engineer would only have to run the <code>make</code> command.
 Equally this could be done by a CI/CD pipeline.
 </p>
 
@@ -371,9 +140,9 @@ Another option would be to have a load balancer, and separate servers based on g
 </p>
 </div>
 </div>
-<div id="outline-container-org0180adf" class="outline-5">
-<h5 id="org0180adf">Development</h5>
-<div class="outline-text-5" id="text-org0180adf">
+<div id="outline-container-org654b5f4" class="outline-5">
+<h5 id="org654b5f4">Development</h5>
+<div class="outline-text-5" id="text-org654b5f4">
 <p>
 Another key advantage of using Docker and Docker Compose is the ease of use for other developers in other teams. For example say the frontend team wants to check that their application is making the correct calls instead of deploying both into production and testing (which is a very bad practise), they can juts run both locally.
 </p>
@@ -383,9 +152,9 @@ This keeps the development costs low and reduces the development complexity, the
 </p>
 </div>
 </div>
-<div id="outline-container-orga6e9807" class="outline-5">
-<h5 id="orga6e9807">Multistage Docker Build</h5>
-<div class="outline-text-5" id="text-orga6e9807">
+<div id="outline-container-orgf9eb811" class="outline-5">
+<h5 id="orgf9eb811">Multistage Docker Build</h5>
+<div class="outline-text-5" id="text-orgf9eb811">
 <p>
 The biggest issue I faced with the backend systems was the very large image size.
 The final size is determined by the last image used in the <code>Dockerfile</code>: in our case this is the <code>rust</code> image, whose total size, including the static assets, is <code>4.07 GB</code>.
@@ -403,9 +172,9 @@ In our case we use the Google Distroless Images. This is done for a few reasons:
 </p>
 </div>
 </div>
-<div id="outline-container-org9975483" class="outline-5">
-<h5 id="org9975483">Consistent Environments</h5>
-<div class="outline-text-5" id="text-org9975483">
+<div id="outline-container-orgf83f133" class="outline-5">
+<h5 id="orgf83f133">Consistent Environments</h5>
+<div class="outline-text-5" id="text-orgf83f133">
 <p>
 From a DevOps perspective the current infrastructure is excellent it allows for the development environment that is run locally to be used in production.
 It is as simple as cloning the code on the server and running make.
@@ -421,9 +190,9 @@ Another major advantage that is obvious is simplicity, only docker needs to be i
 </div>
 </div>
 </div>
-<div id="outline-container-org1b7cfb5" class="outline-4">
-<h4 id="org1b7cfb5">PostgreSQL Database</h4>
-<div class="outline-text-4" id="text-org1b7cfb5">
+<div id="outline-container-orgced5127" class="outline-4">
+<h4 id="orgced5127">PostgreSQL Database</h4>
+<div class="outline-text-4" id="text-orgced5127">
 <p>
 The database that was chosen for the project was the open-source, high performance, relational SQL database PostgreSQL.
 </p>
@@ -438,9 +207,9 @@ The commands to run the database migrations are detailed in the back-end systems
 </p>
 </div>
 
-<div id="outline-container-org55def72" class="outline-5">
-<h5 id="org55def72">High Performance</h5>
-<div class="outline-text-5" id="text-org55def72">
+<div id="outline-container-org307da4f" class="outline-5">
+<h5 id="org307da4f">High Performance</h5>
+<div class="outline-text-5" id="text-org307da4f">
 <p>
 With respect to the scaling of the backend systems, unless the architectural decision was made to transfer to micro-services, a single database server would be used.
 This means that the database must be high performance to service all of the request from the backend in a timely manner.
@@ -448,17 +217,17 @@ This means that the database must be high performance to service all of the requ
 </div>
 </div>
 
-<div id="outline-container-orga857764" class="outline-5">
-<h5 id="orga857764">Security</h5>
-<div class="outline-text-5" id="text-orga857764">
+<div id="outline-container-orgecdb134" class="outline-5">
+<h5 id="orgecdb134">Security</h5>
+<div class="outline-text-5" id="text-orgecdb134">
 <p>
 The current design ensures that the database is not accessible via the internet, actually it is only accessible to the backend systems contain running on the internal docker network. This greatly increases the overall data security of the system, the only method for data exfiltration is through the REST API.
 </p>
 </div>
 </div>
-<div id="outline-container-orgac3ad1c" class="outline-5">
-<h5 id="orgac3ad1c">Migrations</h5>
-<div class="outline-text-5" id="text-orgac3ad1c">
+<div id="outline-container-orgbfc4a1a" class="outline-5">
+<h5 id="orgbfc4a1a">Migrations</h5>
+<div class="outline-text-5" id="text-orgbfc4a1a">
 <p>
 All of the migrations for the system are executed through three commands in the <code>Makefile</code>: <code>make migrations-run</code>, <code>make migrations-reset</code>, and <code>make reset-database</code>.
 </p>
@@ -474,13 +243,13 @@ The <code>robot.sql</code> file contains the values of the robots corresponding 
 </div>
 </div>
 </div>
-<div id="outline-container-orgd4ceeb7" class="outline-3">
-<h3 id="orgd4ceeb7">Services</h3>
-<div class="outline-text-3" id="text-orgd4ceeb7">
+<div id="outline-container-org8d27abe" class="outline-3">
+<h3 id="org8d27abe">Services</h3>
+<div class="outline-text-3" id="text-org8d27abe">
 </div>
-<div id="outline-container-org4efd1fd" class="outline-4">
-<h4 id="org4efd1fd"><code>Auth</code> Endpoint</h4>
-<div class="outline-text-4" id="text-org4efd1fd">
+<div id="outline-container-orga17238e" class="outline-4">
+<h4 id="orga17238e"><code>Auth</code> Endpoint</h4>
+<div class="outline-text-4" id="text-orga17238e">
 <p>
 In order to prevent abuse or malicious attacks to the system, all of the command issuing endpoints are protected, they require that the user is Authenticated and has the correct Authorisation, before they will process the request.
 </p>
@@ -490,9 +259,9 @@ To authenticate with the backend, you will need to provide your username and pas
 </p>
 </div>
 </div>
-<div id="outline-container-orgd55150b" class="outline-4">
-<h4 id="orgd55150b"><code>Command</code> Endpoint</h4>
-<div class="outline-text-4" id="text-orgd55150b">
+<div id="outline-container-org5cc2d8c" class="outline-4">
+<h4 id="org5cc2d8c"><code>Command</code> Endpoint</h4>
+<div class="outline-text-4" id="text-org5cc2d8c">
 <p>
 The HTTP POST method once applied to this endpoint allows the issuing of commands by some user to the system.
 All of the required is passes via the request body, ensuring it is encrypted by the TLS/SSL protocol.
@@ -504,9 +273,9 @@ Once the request has be received, the backend middleware will take the request a
 </p>
 </div>
 </div>
-<div id="outline-container-orgb6349d4" class="outline-4">
-<h4 id="orgb6349d4"><code>Polling</code> Endpoint</h4>
-<div class="outline-text-4" id="text-orgb6349d4">
+<div id="outline-container-orgd409053" class="outline-4">
+<h4 id="orgd409053"><code>Polling</code> Endpoint</h4>
+<div class="outline-text-4" id="text-orgd409053">
 <p>
 The only endpoint that the robot will call is the /poll endpoint, the request to this endpoint will include essential metrics of the robot including the current Instruction the robot is performing and the current battery level of the robot.
 </p>
@@ -535,9 +304,9 @@ A <code>poll</code> contains the minimal set of context required by the backend,
 </p>
 </div>
 
-<div id="outline-container-org577d384" class="outline-5">
-<h5 id="org577d384">Flow of the Polling Routine</h5>
-<div class="outline-text-5" id="text-org577d384">
+<div id="outline-container-org46f8c3c" class="outline-5">
+<h5 id="org46f8c3c">Flow of the Polling Routine</h5>
+<div class="outline-text-5" id="text-org46f8c3c">
 <p>
 Below is a very high level description of the flow of the <code>poll</code> routines:
 </p>
@@ -561,9 +330,9 @@ Below is a very high level description of the flow of the <code>poll</code> rout
 </div>
 </div>
 
-<div id="outline-container-org3c32172" class="outline-4">
-<h4 id="org3c32172">Static File Service</h4>
-<div class="outline-text-4" id="text-org3c32172">
+<div id="outline-container-org025927c" class="outline-4">
+<h4 id="org025927c">Static File Service</h4>
+<div class="outline-text-4" id="text-org025927c">
 <p>
 Another essential service that the backend provides is a basic static file server, this is used to host the frontend static assets. Simply any file in the <code>static</code> directory will be served under the <code>/static</code> path.
 </p>
@@ -575,17 +344,17 @@ The other potential approach for this would have been to introduce another conta
 </div>
 </div>
 
-<div id="outline-container-orgf7b55cf" class="outline-3">
-<h3 id="orgf7b55cf">Interesting Implementation Details</h3>
-<div class="outline-text-3" id="text-orgf7b55cf">
+<div id="outline-container-orga067147" class="outline-3">
+<h3 id="orga067147">Interesting Implementation Details</h3>
+<div class="outline-text-3" id="text-orga067147">
 </div>
-<div id="outline-container-org30294ba" class="outline-4">
-<h4 id="org30294ba">Rust</h4>
-<div class="outline-text-4" id="text-org30294ba">
+<div id="outline-container-org1232e4b" class="outline-4">
+<h4 id="org1232e4b">Rust</h4>
+<div class="outline-text-4" id="text-org1232e4b">
 </div>
-<div id="outline-container-org9779afa" class="outline-5">
-<h5 id="org9779afa">Module System</h5>
-<div class="outline-text-5" id="text-org9779afa">
+<div id="outline-container-orgcd83df9" class="outline-5">
+<h5 id="orgcd83df9">Module System</h5>
+<div class="outline-text-5" id="text-orgcd83df9">
 <p>
 Each service of the system provides is written as a separate module allowing for the system to be easily extended with additional functionality in the future, whilst maintaining a strict distinction between their functionality.
 </p>
@@ -595,9 +364,9 @@ After the Rust 2018 module system revamp, the module system is very intuitive an
 </p>
 </div>
 </div>
-<div id="outline-container-org36b956c" class="outline-5">
-<h5 id="org36b956c">Performance &amp; Safety <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></h5>
-<div class="outline-text-5" id="text-org36b956c">
+<div id="outline-container-orgab188f7" class="outline-5">
+<h5 id="orgab188f7">Performance &amp; Safety <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></h5>
+<div class="outline-text-5" id="text-orgab188f7">
 <p>
 Rust is blazingly fast and memory-efficient: with no runtime or garbage collector, it can power performance-critical services, run on embedded devices, and easily integrate with other languages.
 </p>
@@ -607,9 +376,9 @@ Rust’s rich type system and ownership model guarantee memory-safety and thread
 </p>
 </div>
 </div>
-<div id="outline-container-org0228982" class="outline-5">
-<h5 id="org0228982">Recoverable Errors</h5>
-<div class="outline-text-5" id="text-org0228982">
+<div id="outline-container-orge169094" class="outline-5">
+<h5 id="orge169094">Recoverable Errors</h5>
+<div class="outline-text-5" id="text-orge169094">
 <p>
 Idiomatic Rust code uses the <code>Result&lt;T,E&gt;</code> type, to show that a function that would usually return a value of type <code>T</code>, may fail and produce an error of type <code>E</code>.  I have create a custom error type for the backend system, encoding all of the possible errors.
 </p>
@@ -620,9 +389,9 @@ The conversion is handled automatically by the try operator (<code>?</code>), wh
 </p>
 </div>
 </div>
-<div id="outline-container-orgd00411e" class="outline-5">
-<h5 id="orgd00411e">Asynchronous</h5>
-<div class="outline-text-5" id="text-orgd00411e">
+<div id="outline-container-org8b6e8c7" class="outline-5">
+<h5 id="org8b6e8c7">Asynchronous</h5>
+<div class="outline-text-5" id="text-org8b6e8c7">
 <p>
 The backend system is fully asynchronous and is using the newly stabilised <code>async/await</code> syntax, along with the <code>Tokio</code> executor that comes with <code>Actix Web</code>.
 </p>
@@ -636,11 +405,11 @@ This is one of the reasons the backend system has such great performance charact
 </div>
 </div>
 
-<div id="outline-container-org9c9df34" class="outline-4">
-<h4 id="org9c9df34"><code>FromRequest</code> Trait Implementations</h4>
-<div class="outline-text-4" id="text-org9c9df34">
+<div id="outline-container-org88d120e" class="outline-4">
+<h4 id="org88d120e"><code>FromRequest</code> Trait Implementations</h4>
+<div class="outline-text-4" id="text-org88d120e">
 <p>
-The <a href="#org4efd1fd"><code>Auth</code> Endpoint</a> utilises the <code>FromRequest</code> trait <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> to encapsulate all of the authentication and authorisation logic, essentially acting as <code>middleware</code> to the request <code>handler</code> by simply giving the user access to a <code>User</code> struct, containing all of the relevant information for that user.
+The <a href="#orga17238e"><code>Auth</code> Endpoint</a> utilises the <code>FromRequest</code> trait <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> to encapsulate all of the authentication and authorisation logic, essentially acting as <code>middleware</code> to the request <code>handler</code> by simply giving the user access to a <code>User</code> struct, containing all of the relevant information for that user.
 </p>
 
 <p>
@@ -667,7 +436,7 @@ On the other hand, if the backend was unable to validate the tokens value then t
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Kyle Cotton</p>
-<p class="date">Created: 2021-03-30 Tue 19:33</p>
+<p class="date">Created: 2021-03-31 Wed 10:15</p>
 </div>
 </body>
 </html>

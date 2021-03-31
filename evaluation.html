@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <!-- Default CSS file -->
-<link rel="stylesheet" type="text/css" href="assets/css/style.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
 
 <!-- Justin Manual CSS -->
 <link rel="stylesheet" type="text/css" href="assets/css/justin-style.css"/>
@@ -21,6 +21,9 @@ rel="stylesheet">
 integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 <!-- TODO: BootStrap - required to integrate offline usage later -->
+
+<!-- Favicon icon -->
+<link rel="icon" href="assets/favicon/favicon.png">
 
 
 <body><div id="wrap">	<div id="header">		
@@ -40,22 +43,67 @@ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLP
 				
             <h1 id="overall-system-text">How Well Does Our System Perform?</h1>
             <p>Suggested Font: Oswald for headers, Nunito for sub-headers and paragraphs to match with web application design.<br>
-            In addition: Color Palette: Primary color - #002B53 and Secondary color - #4e73df</p>
+            In addition: Color Palette: Primary color - #002B53 and Secondary color - #4e73df<br>
+            Our team will just use this CSS template for simplicity purposes but improved.
+            Could use accordion for displaying content for expandability purposes.
+            </p>
             
             <h2><a href="#tests">Evaluation Tests</a></h2>
-			<p>Show the results of testing where available. This can include tables, graphs, videos etc. Be careful to present data in an appropriate manner and be clear about the conclusions drawn from whatever it is you present</p>    
+            <p>Show the results of testing where available. This can include tables, 
+              graphs, videos etc. Be careful to present data in an appropriate manner and be 
+              clear about the conclusions drawn from whatever it is you present</p>    
 			  
             <div id="user-tests-div">
                 <h3><a href="#usertests">Accessibility and Usability Tests</a></h3>
-                <h5>Testing Overview</h5>
+
+                <h5>User Interface Testing</h5>
                 <p>Our team truly believes in giving each user a rich experience to control their Claynce robot with greater ease.
-                    Accessibility and usability continues to remain as an important aspect of our project, 
-                    otherwise the user would ultimately not would want to use our product. 
-                    Therefore, our team has created an accessibility and usability questionnaire to further understand our users better.
-                    As our team’s Participant Information Sheets and consent forms met the SDP Ethics Committee’s standards, 
-                    our team has proceeded to collect 30 responses from SDP students and friends. 
-                    Our team believes in the integrity of input, and these individuals are useful sources, 
-                    because every individual plays a key role in helping our team continuously improve our user interface.</p>
+                  As accessibility and usability continue to remain as an important aspect of our project, 
+                  we would like to ensure our product meets the industry standards.</p>
+
+
+
+                <h5>Internal assessment</h5> 
+                <p>
+                  Our team has conducted an internal assessment to formally assess how perceivable, operable and understandable our
+                  our web application is. From our sheet, our team has conducted a quantitative analysis of
+                  the guidelines, where we have created a scoring guideline
+                  ranging from 0 to 3 for each attribute met. We have clearly
+                  identified our strengths and weaknesses to further improve
+                  our user interface and ultimately the web application.
+                  <br>
+                  An attribute requirement is met satisfactory if its score is 2
+                  or 3. 
+                  <ul>
+                    <li>The number of level A attributes met successfully is 10 out of 28.</li>
+                    <li>The number of level AA attributes met satisfactorily is 9 out 19.</li>
+                    <li>The number of level AAA attributes met expectations is 8 out of 28.</li>
+                  </ul>  
+                  Our team has additionally conducted a through analysis of the user interface using Google Developer Tools.
+                  Testing has also been done to ensure that the font size and
+                  styles remain consistent in the web application’s pages no
+                  matter the device and/or browser.
+                 <a href="assets/user-report/Accessibility _ Usability Testing - Sheet1.pdf">Userability Testing Results</a>
+
+                 </p>
+
+                 <div class="container">
+                   <div class="row">
+                     <div class="col-md-12">
+                       <img src="assets/img/lighthouse-test.png" style="width: 90%; margin: 8px auto;">
+                     </div>
+                   </div>
+                 </div>
+
+
+
+
+                <h5>Questionnaire Overview</h5>
+                <p>Our team has additionally conducted an accessibility and usability questionnaire to further understand our users better.
+                   As our team’s Participant Information Sheets and consent forms met the SDP Ethics Committee’s standards, 
+                   our team has proceeded to collect 30 responses from SDP students and friends. 
+                  Our team believes in the integrity of input, and these individuals are useful sources, 
+                  because every individual plays a key role in helping our team continuously improve our user interface.</p>
                 
                 <div id="images-container" class="container">
                     <div class="row">
@@ -72,9 +120,7 @@ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLP
                 <p>From the following responses, our team has conducted in-depth both quantitative and qualitative 
                     analysis on the questionnaire to understand more from the user feedback. 
                     Figures are rounded to the closest two decimal places.<br>
-                    For more details, please refer to the following document:
-                    <a href="assets/user-report/Accessibility _ Usability Testing - Sheet1.pdf">Userability Testing Results</a></p>
-                <div class="container">
+                  <div class="container">
                     <table class="table">
                         <thead>
                           <tr>
@@ -120,25 +166,34 @@ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLP
                             <td>7.23 / 10</td>
                           </tr>
                         </tbody>
-                      </table>    
-                </div>
+                    </table>    
+                  </div>
+
+                  <p>For more details, please refer to the following document:
+                    <a href="assets/user-report/Accessibility _ Usability Testing - Sheet1.pdf">Userability Testing Results</a></p>
                   
        
             </div> 
 			
 			<h2><a href="#Diagrams">Main Areas of Improvement</a></h2>
-            <h4>Evaluation</h4>		
+      <h4>Evaluation</h4>		
 			<p>What did you learn from your testing? How did your evaluation/user testing change your system?</p>
-            <h4>Userability Testing</h4>
-            <p>The lessons learned from conducting userability testing have allowed our team to implement
-                more user-friendly features to ensure the colors of the web application match properly.
-                Features to assist end users with how things work, radio buttons for
-                clear command instructions, and activity logs as a management tool for the Claynce bot.
+
+      <h4>Questionnaire Results</h4>
+      <p>Conducting usability testing has allowed our team to implement
+                more user-friendly features to ensure the visualizations, such as the 
+                colors of the web application match properly.
+                Our team has implemented dedicated features to assist end users with how the system is displayed,
+                radio buttons for clear command instructions, and activity logs as a management tool for the Claynce bot.
                 In addition, our team has ensured our specialized selection of visuals to ease the navigation
                 "learning-curve" of the user.</p>
 
             <h2>Resources</h2>
-            <p>Google Fonts, BootStrap etc</p>
+            <ol>
+              <li>Howe, Justin. "Accessibility and Usability Testing Document"</li> 
+              <li>Howe, Justin. "Userability Testing Results"</li> 
+              <li>All resources are conducted in MLA style.</li>
+            </ol>
 
             </div>	
             <div style="clear: both;"> </div>		
