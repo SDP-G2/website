@@ -258,8 +258,27 @@
             <p> The navigation algorithm is simple: the robot is given a list of (x,y) points in the court’s reference system - the points are determined from the position of the ArUco markers. 
             Claynce knows its position on the court, and hence is able to travel to the first point on the list. Once it’s in range of that point, the list will be updated to remove it, and the robot will look at the next point to check by how much it needs to turn to reach it.
             This approach allows Claynce to navigate to literally any point from the list, as long as it knows its position correctly. This makes the algorithm very versatile, although right now we’re not using it to full potential - the web application allows you to choose one of two predefined patterns (either a zigzag one, or a circular one).
+<p>While the robot is moving to the next point, it is possible for it to go off-track due to friction or sliding of the wheels or maybe something else. To remedy this, there exists an angle correction algorithm: given the location of the next point and the position of Claynce on the court, it’s possible to calculate the distance between them, as well as the angle of the direction of movement (with respect to the court’s reference frame). If this calculated angle is not the same as the angle at which the robot is travelling now, Claynce will adjust its wheel velocities to turn more to the side to face the destination straight on.
+For example, see this image:
+<figure>
+              <img src="/resources/imgs/angle-correction.jpg" class="centeredBlock" height="300px" />
+              <figcaption style="text-align: center;">When Claynce performs angle correction</figcaption>
+            </figure>
+The robot has not turned properly, meaning that the destination is not straight ahead. The algorithm calculates the angle of travel (from the set horizontal axis x) alpha, as well as the angle by how much the course needs to be adjusted (beta). 
+Using this information and basic trigonometry, the robot changes the velocities of the wheels so that it turns right until beta reaches almost zero - it will never exactly be zero, so some tolerance (0.1 degrees) is allowed. 
+After that it starts going straight again, because the destination is now right in front of it. This algorithm runs constantly, so the robot continuously compares the angles and adjusts its velocity if necessary.
+</p>
+            </p>
+            <p>
+            
+<b>Obstacle avoidance: </b>
+Claynce has three distance sensors on the front to allow it to detect obstacles. Given that there shouldn’t be any on the court during cleaning, it’s enough for the robot to simply stop in front of an obstacle and wait until it’s removed. 
+The distance sensors are placed in such a way as to detect the obstacles that are 40 cm in front, or a bit to the sides of the robot (the ones at the sides may stop the net from moving forward); hence one sensor points straight, while the other two are point at 15-degree angles from the robot’s centerline.
+ This short detection distance allows Claynce to stop in front of reasonably small obstacles, while ignoring the net poles or the walls of the court, which are usually farther away from it.
 
             </p>
+              <!--  <video class="centeredBlock" width="420" height="480" controls style="margin-bottom: 40px;">
+              <source src="resources/videos/obst.mp4" type="video/mp4"> -->
           </section>
         </div>
         <div style="clear: both"></div>
