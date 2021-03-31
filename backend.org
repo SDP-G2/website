@@ -7,6 +7,8 @@ One of the most essential aspects of the project is the connection between the b
 
 In order to support the operation of the robot and the web interface the backend system provides a myriad of services, which are secure, highly performant, and extensible.
 
+[[./assets/img/sdp_flowchart.png]]
+
 ** Rationale
 *** Architecture
 Having a centralised C2 (Command & Control Server) allows for greater simplification and de-duplication of functionality across the various controlling entities that could be employed in the future, in addition to the Web Application that is currently in development. Any system that is capable of consuming the Claynse REST API (Representational State Transfer Application Program Interface) will be able to issue commands to the robot.
