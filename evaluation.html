@@ -9,6 +9,15 @@
 <!-- Justin Manual CSS -->
 <link rel="stylesheet" type="text/css" href="assets/css/justin-style.css"/>
 
+<!-- Konrad Hardcore Styles-->
+<style>
+  .centeredBlock {
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto;
+  }
+  </style>
+
 <!-- Following third party modules are MIT licensed -->
 
 <!-- Google Fonts -->
@@ -43,8 +52,121 @@ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLP
             In addition: Color Palette: Primary color - #002B53 and Secondary color - #4e73df</p>
             
             <h2><a href="#tests">Evaluation Tests</a></h2>
-			<p>Show the results of testing where available. This can include tables, graphs, videos etc. Be careful to present data in an appropriate manner and be clear about the conclusions drawn from whatever it is you present</p>    
-			  
+			<p>
+        Show the results of testing where available. This can include tables, graphs, videos etc. Be careful to present data in an appropriate manner and be clear about the conclusions drawn from whatever it is you present
+      </p>    
+      <div>
+        <h3>Visual Localization Tests</h3>
+        <h5>Purpose</h5>
+        <p>
+          The purpose of this test was to determine the accuracy of the primary localization system used by our robot.
+        </p>
+        <h5>Method</h5>
+        <p>
+          To determine efficiency of ArUco localisation testing was conducted independently of other localisation methods. 50x50cm ArUco tag was put at the origin of the world, facing y-axis. Robot facing the opposite of y-axis was put in 16,922 different positions along lines x=[-3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3] (all values are in meters).
+          At each position, the distance between actual position and the estimated position (error) was measured. The resulting error heatmap is presented below.
+        </p>
+        <figure>
+          <img class="centeredBlock" src="resources/imgs/aruco_qa.png" />
+        </figure>
+        <h5>Result Interpretation</h5>
+        <p>
+          Not surprisingly, the closer robot is to the marker, the more accurate is its estimate. This has a crucial importance for determining the effective range for marker detection. 
+          Technically, we could detect the marker from a big distance (e.g. 11 meters), but this test tells us that estimate based on such marker is likely to be inaccurate.
+        </p>
+        <p>
+          Moreover, position estimates tend to be more accurate when robot sees the marker at an angle rather than when the marker is facing the camera.
+        </p>
+        <p>
+          This knowledge resulted in a improved design of the robot. We maximised the ArUco detection range by rotating fron cameras of the robot by 30 degres. At the same time, we limitted the detection range for the rear camera to guarantee that the estimates before entering the blindzone are accurate.  
+        </p>
+      </div>
+
+      <div>
+        <h3>Hardware-Backend Integration Tests</h3>
+        <h5>Purpose</h5>
+        <p>
+          Main purpose of the hardware-backend integration tests is to determine whether the robot's controller is able to correctly manage various states of the of the robot, execute (or not) commands in given states, fetch tasks from the server, and update the database with the current state of the task.
+          It is especiallly important as many subsystems have to properly cooperate in order to carry out specifc task. What is more, robot states are more fine grained than state of the tasks that are store in the server, so the synchronisation between the robot and the server has to occur in specific order and at specific phases of command execution.
+        </p>
+        <h5>Method</h5>
+        <p>
+          Hardware modules integration has been evaluated by executing different scenarios and measuring in how many trials the system behaves as expected. The following scenarios have been tested:
+        </p>
+        <ol>
+          <li>Robot shuts down after it receives Abort Safety command in Idle state</li>
+          <li>Robot shuts down after it receives Abort LowBattery command in Idle state</li>
+          <li>Robot executes ZigZag Task</li>
+          <li>Robot does not execute issued Circular Task while executing ZigZag Task</li>
+          <li>Robot does not shut down when it receives Abort LowBattery Command during cleaning task</li>
+          <li>Robot shuts down when when it receives Abort Safety Command during cleaning task</li>
+          <li>Robot performs Circular task that is scheduled in the future at the appropriate time</li>
+        </ol>
+        <h5>Results and Interpretation</h5>
+        <p>
+          We have executed each scenario 5 times with a 100% success rate. The system behaving as expected in each test case gave us confidence that the subsystems has been integrated correctly.
+        </p>
+      </div>
+      <div>
+        <h3>Measuring Pattern Execution Time</h3>
+        <p>
+          Measuring the actual time of the program execution turned out to be a difficult task. We had only one machine capable of running the simulation and in that machine the simulation rate oscillated around 0.05-0.10x the actual time. Meaning that it took from 10 to 20 seconds for 1 second to pass in the simulation.
+          For that reason we had to make some "smart" estimates regarding the execution times of our patterns, as it was infeasible to carry out multiple trials using full setup.
+        </p>
+        <p>
+          We decided to measure how much time it takes to move the robot from point A on the one side of the court to point B on the other side of the court in a straight line fashion. 
+          We compared the results for two cases: 
+        </p>
+        <ol>
+          <li>the robot blindly moved from A to B</li>
+          <li>the robot used our navigation module that utilises odometry and ArUco navigation</li>
+        </ol>
+        <p>
+          Not surprisingly, the second case took longer than the first one. On average by 19%. There are two main reasons for that. 
+          Firstly, when using ArUco navigation there is some "jerky" motion caused by the inaccuarate pose estimation making the robot adjust it's pose.
+          Secondly, due to drag and direction estimation inaccuracy. Robot does not move in a straight line, rather than a curve.  
+        </p>
+        <p>
+          Knowning that, we run the simulation without using the ArUco navigation which speeded up the simulation to bearable time. In such circumstances, we achieved following results:
+        </p>
+        <table>
+          <tr>
+            <th>Pattern Type</th>
+            <th>Repetitions</th>
+            <th>(Min - Max) Running Time w/o. ArUco localization</th>
+            <th>Estimated (Min - Max) Running Time w. ArUco localization</th>
+          </tr>
+          <tr>
+            <td>Zig-Zag</td>
+            <td>10</td>
+            <td>9m 28s - 10m 6s</td>
+            <td>11m 16s - 12m 1s</td>
+          </tr>
+          <tr>
+            <td>Circular</td>
+            <td>10</td>
+            <td>23m 13s - 23m 41s</td>
+            <td>27m 38 - 28m 11s</td>
+          </tr>
+        </table>
+        <p>
+          We find the estimated times to be within acceptable range. Zig-Zag pattern which lasts almost 12 minutes falls little behind the time it takes for an average person to sweep the court (from our research it is around 5 minutes per half).
+          For the circular pattern this time is over 2 times longer, but at the same time circular traverses the same leg two times. However, due to its duration, we don't expect people using it midgame. It would rather act as a start/end of day court maintenance program.
+          It is important to stress the fact that the exact time results heavily depends on the configuration of the cleaning patterns. As the choice of parameters for pattern generation might differ between users.
+        </p>
+        <p>
+          Despite Claynce being slower than human player, these 10 minutes are freed for players / court maintainers. In this time they can warm-up, stretch, rest, talk with the partner, or clean up different parts of the court.  
+          Additionally.
+        </p>
+      </div>
+      <!-- <div>
+        <h3>Evaluating current Claynce perfomance</h3></h3>
+        <p>
+          In order to evaluate Claynce performance, we had to shrink the cleaning area, so the simulations could run in a reasonable time.
+          We decided to use the robot on a area up to 3 meters away from the net, so we could also verify that changing sides of the court works as expected.
+        </p>
+        
+      </div> -->
             <div id="user-tests-div">
                 <h3><a href="#usertests">Accessibility and Usability Tests</a></h3>
                 <h5>Testing Overview</h5>
@@ -73,7 +195,7 @@ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLP
                     analysis on the questionnaire to understand more from the user feedback. 
                     Figures are rounded to the closest two decimal places.<br>
                     For more details, please refer to the following document:
-                    <a href="assets/user-report/Accessibility _ Usability Testing - Sheet1.pdf">Userability Testing Results</a></p>
+                    <a href="assets/user-report/Accessibility _ Usability Testing - Sheet1.pdf">Usability Testing Results</a></p>
                 <div class="container">
                     <table class="table">
                         <thead>
@@ -122,8 +244,6 @@ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLP
                         </tbody>
                       </table>    
                 </div>
-                  
-       
             </div> 
 			
 			<h2><a href="#Diagrams">Main Areas of Improvement</a></h2>
