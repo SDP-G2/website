@@ -1,442 +1,512 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <title>Title</title>
-    <meta http-equiv="Content-Language" content="English" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
-    <style>
-      .centeredBlock {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      </style>
-  </head>
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <title>Claynce - SDP Group #2</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="vendors/animate-css/animate.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
 
-  <body>
-    <div id="wrap">
-      <div id="header">
-        <h1><a href="#">Claynce (Group 2)</a></h1>
-        <h2>Group subtitle</h2>
-      </div>
-      <div id="menu">
-        <ul>
-          <li class="link" id="welcome.html">
-            <a href="./index.html">Welcome </a>
-          </li>
-          <li class="link" id="system.html">
-            <a href="./system.html">System </a>
-          </li>
-          <li class="link" id="howitworks.html">
-            <a href="./howitworks.html">How it works</a>
-          </li>
-          <li class="link" id="evaluation.html">
-            <a href="./evaluation.html">Evaluation </a>
-          </li>
-          <li class="link" id="budget.html">
-            <a href="./budget.html">Budget </a>
-          </li>
-          <li class="link" id="team.html"><a href="./team.html">Team </a></li>
-        </ul>
-      </div>
-<div id="content">
-<div id="outline-container-orgcfe32e5" class="outline-2">
-<h2 id="orgcfe32e5">Backend</h2>
-<div class="outline-text-2" id="text-orgcfe32e5">
-</div>
-<div id="outline-container-orgaf87538" class="outline-3">
-<h3 id="orgaf87538">Overview</h3>
-<div class="outline-text-3" id="text-orgaf87538">
-<p>
-One of the most essential aspects of the project is the connection between the backend server and the web interface and robot.
-</p>
+    <!-- Customized CSS -->
+    <link rel="stylesheet" href="css/sdp-customized/customized.css">
+</head>
+<body>
 
-<p>
-In order to support the operation of the robot and the web interface the backend system provides a myriad of services, which are secure, highly performant, and extensible.
-</p>
-
-
-<div class="figure">
-<p><img src="./assets/img/sdp_flowchart.png" alt="sdp_flowchart.png" />
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org6911281" class="outline-3">
-<h3 id="org6911281">Rationale</h3>
-<div class="outline-text-3" id="text-org6911281">
-</div>
-<div id="outline-container-org85a7f56" class="outline-4">
-<h4 id="org85a7f56">Architecture</h4>
-<div class="outline-text-4" id="text-org85a7f56">
-<p>
-Having a centralised C2 (Command &amp; Control Server) allows for greater simplification and de-duplication of functionality across the various controlling entities that could be employed in the future, in addition to the Web Application that is currently in development. Any system that is capable of consuming the Claynse REST API (Representational State Transfer Application Program Interface) will be able to issue commands to the robot.
-</p>
-
-<p>
-This allows for the various elements of the system to be developed in isolation, and to be interchangeable with other components, resulting in a modular architecture.
-</p>
-
-<p>
-It is possible for the backend systems to store the metrics of the robot, and potentially use them in the future - whether for simple applications such as graphs, or more complex data analysis to identify charging patterns, command behaviours or to provide additional context to log messages.
-</p>
-
-<p>
-By centralising the issuing of commands we can ensure that only valid commands are ever given to the robot, allowing for comprehensive validation of all potential commands.
-This abstracts substantial complexity for the hardware team: not only would this logic reduce cost (if this was to be migrated to an integrated circuit), it also allows custom rules to be added dynamically in the future - without the requirement of a firmware update. This helps to provide a seamless user experience.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org38b3726" class="outline-4">
-<h4 id="org38b3726">REST API</h4>
-<div class="outline-text-4" id="text-org38b3726">
-<p>
-It was decided that a REST API would be the best method of communication, there were a few reasons for this.
-</p>
-<ul class="org-ul">
-<li>Using a REST API is much simpler - taking into account all of the constraining factors, such as development time and the technical debt involved, it was not feasible to implement our own protocol, even an internet layer protocol would be a massive undertaking.</li>
-<li>I had considered an approach utilising a socket connection to the robot to avoid the overhead of establishing a TCP/HTTP connection each time, this would have been a mistake. This would have required the server to be able to hold open connections for each robot using the service.
-<ul class="org-ul">
-<li>As the popularity of the product increased this would have not been sustainable to have thousands of open socket connections to a machine</li>
-<li>This would have caused a very large resource allocation but very low utilisation, which is a inefficient use of compute resources</li>
-</ul></li>
-</ul>
-
-<p>
-Therefore it was decided that a REST API using the standard <code>HTTP</code> methods for interacting with the system was the most appropriate approach.
-</p>
-</div>
-</div>
-<div id="outline-container-org1f31c0d" class="outline-4">
-<h4 id="org1f31c0d">Dockerized Application</h4>
-<div class="outline-text-4" id="text-org1f31c0d">
-</div>
-<div id="outline-container-org1cd76e9" class="outline-5">
-<h5 id="org1cd76e9">Scaling</h5>
-<div class="outline-text-5" id="text-org1cd76e9">
-<p>
-This allows each instance of our backend to run independently of each other in the case we need to scale the application, it is as simple as increasing the number of instances in the swarm manager (Docker Swarm, Kubernetes).
-</p>
-</div>
-</div>
-<div id="outline-container-org08565ca" class="outline-5">
-<h5 id="org08565ca">Deployment</h5>
-<div class="outline-text-5" id="text-org08565ca">
-<p>
-The deployment of our applications is far simpler, in order to run the backend system it will be as simple as running the image on the server, again using the <code>Makefile</code>, the devops engineer would only have to run the <code>make</code> command.
-Equally this could be done by a CI/CD pipeline.
-</p>
-
-<p>
-Other cloud providers such as Google Cloud Run &amp; AWS Lambda have the ability to upload an image directly and have it run. This has the advantage of not having to manage infrastructure and have the ability to scale to demand, spinning down to zero when not in use. This is a very efficient use of compute.
-</p>
-
-<p>
-Again looking to the future, without moving to micro-services, a Serverless Queue could be added to allow them to be buffered and rate limited to avoid overwhelming the server but still being able to receive requests.
-Another option would be to have a load balancer, and separate servers based on geographical location very similar to how game servers manage the immense amount of traffic they are subjected to.
-</p>
-</div>
-</div>
-<div id="outline-container-org654b5f4" class="outline-5">
-<h5 id="org654b5f4">Development</h5>
-<div class="outline-text-5" id="text-org654b5f4">
-<p>
-Another key advantage of using Docker and Docker Compose is the ease of use for other developers in other teams. For example say the frontend team wants to check that their application is making the correct calls instead of deploying both into production and testing (which is a very bad practise), they can juts run both locally.
-</p>
-
-<p>
-This keeps the development costs low and reduces the development complexity, the other developers would just have to clone the backend and run the <code>make</code> command, this would start all of the backend systems locally.
-</p>
-</div>
-</div>
-<div id="outline-container-orgf9eb811" class="outline-5">
-<h5 id="orgf9eb811">Multistage Docker Build</h5>
-<div class="outline-text-5" id="text-orgf9eb811">
-<p>
-The biggest issue I faced with the backend systems was the very large image size.
-The final size is determined by the last image used in the <code>Dockerfile</code>: in our case this is the <code>rust</code> image, whose total size, including the static assets, is <code>4.07 GB</code>.
-</p>
-
-<p>
-The <code>rust</code> image needs to contain all of the dependencies to compile the source code and statically link it against <code>libc</code>, therefore the image needs to contain the entire rust tool chain; <code>cargo</code>, <code>rustc</code>, etc, in addition to a shell, and all of the standard <code>libc</code> libraries. However, it is not possible to use a smaller final image as all of these resources and dependencies are required in order to create our final executable.
-</p>
-
-<p>
-The solution to the issue is to use a mutlistage build process.
-We use a <code>builder</code> image which contains all of the required dependencies and software to create our executable.
-Once this executable has been created, we can copy it to another, much smaller, image.
-In our case we use the Google Distroless Images. This is done for a few reasons: it allows us to create images with size of around <code>28 MB</code>, which is considerably smaller, and is more secure as it does not contain a shell or other essential software that could be exploited.
-</p>
-</div>
-</div>
-<div id="outline-container-orgf83f133" class="outline-5">
-<h5 id="orgf83f133">Consistent Environments</h5>
-<div class="outline-text-5" id="text-orgf83f133">
-<p>
-From a DevOps perspective the current infrastructure is excellent it allows for the development environment that is run locally to be used in production.
-It is as simple as cloning the code on the server and running make.
-</p>
-
-<p>
-From a team perspective this is great, it allows for every member of the team to run the full stack system by only installing Docker, if there implementation works locally it is then highly likely to work in production, giving the developer confidence in their work, ensuring more robust and better tested code finds its way into production.
-</p>
-
-<p>
-Another major advantage that is obvious is simplicity, only docker needs to be installed, no obscure or insecure dependencies are required.
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-orgced5127" class="outline-4">
-<h4 id="orgced5127">PostgreSQL Database</h4>
-<div class="outline-text-4" id="text-orgced5127">
-<p>
-The database that was chosen for the project was the open-source, high performance, relational SQL database PostgreSQL.
-</p>
-
-<p>
-I have decided to use the industry tried and trusted PostgreSQL, due to the reasons above.
-A relational SQL database that is fast, reliable and has extensive internal rollback functionality, in case of an error during a transaction or other operation.
-</p>
-
-<p>
-The commands to run the database migrations are detailed in the back-end systems <code>Makefile</code>, allowing them to be conveniently documented and executed by other team members.
-</p>
-</div>
-
-<div id="outline-container-org307da4f" class="outline-5">
-<h5 id="org307da4f">High Performance</h5>
-<div class="outline-text-5" id="text-org307da4f">
-<p>
-With respect to the scaling of the backend systems, unless the architectural decision was made to transfer to micro-services, a single database server would be used.
-This means that the database must be high performance to service all of the request from the backend in a timely manner.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgecdb134" class="outline-5">
-<h5 id="orgecdb134">Security</h5>
-<div class="outline-text-5" id="text-orgecdb134">
-<p>
-The current design ensures that the database is not accessible via the internet, actually it is only accessible to the backend systems contain running on the internal docker network. This greatly increases the overall data security of the system, the only method for data exfiltration is through the REST API.
-</p>
-</div>
-</div>
-<div id="outline-container-orgbfc4a1a" class="outline-5">
-<h5 id="orgbfc4a1a">Migrations</h5>
-<div class="outline-text-5" id="text-orgbfc4a1a">
-<p>
-All of the migrations for the system are executed through three commands in the <code>Makefile</code>: <code>make migrations-run</code>, <code>make migrations-reset</code>, and <code>make reset-database</code>.
-</p>
-
-<p>
-The <code>up.sql</code> file contains the SQL commands used to create all of the tables used in the system, in addition it also contains constraints, ensuring that the database entries remain consistent.
-down.sql
-The <code>down.sql</code> file contains the SQL commands used to destroy all of the tables in the database.
-The <code>reset.sql</code> file contains the SQL commands used to remove all of the data from the tables.
-The <code>robot.sql</code> file contains the values of the robots corresponding to the QR codes that have been generated.
-</p>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-org8d27abe" class="outline-3">
-<h3 id="org8d27abe">Services</h3>
-<div class="outline-text-3" id="text-org8d27abe">
-</div>
-<div id="outline-container-orga17238e" class="outline-4">
-<h4 id="orga17238e"><code>Auth</code> Endpoint</h4>
-<div class="outline-text-4" id="text-orga17238e">
-<p>
-In order to prevent abuse or malicious attacks to the system, all of the command issuing endpoints are protected, they require that the user is Authenticated and has the correct Authorisation, before they will process the request.
-</p>
-
-<p>
-To authenticate with the backend, you will need to provide your username and password to the <code>/auth</code> endpoint, assuming the credentials are valid, you will be provided with a short lived JWT (JSON Web Token), authorising that user to access their command service in a stateless manner.
-</p>
-</div>
-</div>
-<div id="outline-container-org5cc2d8c" class="outline-4">
-<h4 id="org5cc2d8c"><code>Command</code> Endpoint</h4>
-<div class="outline-text-4" id="text-org5cc2d8c">
-<p>
-The HTTP POST method once applied to this endpoint allows the issuing of commands by some user to the system.
-All of the required is passes via the request body, ensuring it is encrypted by the TLS/SSL protocol.
-However, this endpoint is secured - it requires an authorisation token specifically a JWT (JSON Web Token), without a valid token a 401 Unauthorized response will be received.
-</p>
-
-<p>
-Once the request has be received, the backend middleware will take the request and validate the JWT (returning early if required), before calling the specific handler, where the command that the user has provided will be validated before being stored in the database.
-</p>
-</div>
-</div>
-<div id="outline-container-orgd409053" class="outline-4">
-<h4 id="orgd409053"><code>Polling</code> Endpoint</h4>
-<div class="outline-text-4" id="text-orgd409053">
-<p>
-The only endpoint that the robot will call is the /poll endpoint, the request to this endpoint will include essential metrics of the robot including the current Instruction the robot is performing and the current battery level of the robot.
-</p>
-
-<p>
-The server then gathers the current task the robot should be doing (the command it previoudsly issued to it), the current state of the robot (the infomation given in the request), and the next command that will be issued if any.
-</p>
-
-<p>
-One of the core rules for the system is that if the battery level of the robot is insufficient the robot will immediately abort (Abort(AbortReason::LowBattery)) the other rules allow for the various functions of the system.
-</p>
-
-<p>
-As previously discussed, we can see the Strict Type System, coming into its own, allowing all of the different types of the system to be expressed.
-The way in which I have written the system ensures that the core rules for the system are encoded in the type system, therefore invalid states simply cannot be reached, since the system will not compile, this is a major advantage and design choice I have decided be using the Rust language idiomatically.
-</p>
+    <!--================Header Menu Area =================-->
+    <header class="header_area">	
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <h1 id="claynce-header-text">Back-End</h1>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" 
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+                    aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav ml-auto">
+                            <li class="nav-item"><a class="nav-link" href="index.html">WELCOME</a></li> 
+                            <li class="nav-item"><a class="nav-link" href="system.html">SYSTEM</a></li> 
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" 
+                                aria-haspopup="true" aria-expanded="false">HOW IT WORKS</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="overview.html">Overview</a></li> 
+                                    <li class="nav-item"><a class="nav-link" href="frontend.html">Front-End</a></li> 
+                                    <li class="nav-item"><a class="nav-link" href="backend.html">Back-End</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="robot.html">Robot</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="evaluation.html">EVALUATION</a></li>     
+                            <li class="nav-item"><a class="nav-link" href="budget.html">BUDGET</a></li>
+                            <li class="nav-item"><a class="nav-link" href="team.html">TEAM</a></li>     
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--================Header Menu Area =================-->
 
 
-<p>
-As previously discussed the robot will use a standard <code>HTTP</code> request to the backend system.
-This is referred to as Polling, the robot gives some context to the backend, allowing an appropriate response to be coordinated.
-</p>
+    <!--================Hero Banner Area Start =================-->
+    <section class="hero-banner d-flex align-items-center">
+        <div class="container text-center">
+            <h2>Backend</h2>
+        </div>
+    </section>
+    <!--================Hero Banner Area End =================-->
 
-<p>
-A <code>poll</code> contains the minimal set of context required by the backend, <code>robots_serial_number</code>, <code>command_id</code>, <code>status</code>, and <code>battery_level</code>.
-</p>
-</div>
+    <!--================Introduction Start =================-->
+    <section class="sample-text-area">
+        <div class="container">
+            <div id="wrap">
 
-<div id="outline-container-org46f8c3c" class="outline-5">
-<h5 id="org46f8c3c">Flow of the Polling Routine</h5>
-<div class="outline-text-5" id="text-org46f8c3c">
-<p>
-Below is a very high level description of the flow of the <code>poll</code> routines:
-</p>
-<ol class="org-ol">
-<li>The robot sends a <code>HTTP</code> request to the <code>/poll</code> endpoint</li>
-<li>Update the status of the robot in the database
-<ul class="org-ul">
-<li>This is done to allow the web interface to immediately see the latest infomation about their device</li>
-</ul></li>
-<li>Check the battery level of the robot
-<ul class="org-ul">
-<li>If the value is below some predetermined value we need to <code>Abort(AbortReason::LowBattery)</code></li>
-</ul></li>
-<li>We need to now process the correspond <code>Command</code> for this <code>Poll</code>
-<ul class="org-ul">
-<li>The <code>Command</code> is retrieved from the database by the <code>command_id</code></li>
-</ul></li>
-<li>Return this response to the robot.</li>
-</ol>
-</div>
-</div>
-</div>
+          <div id="content">
+          <div id="outline-container-orgcfe32e5" class="outline-2">
+          <h2 id="orgcfe32e5">Backend</h2>
+          <div class="outline-text-2" id="text-orgcfe32e5">
+          </div>
+          <div id="outline-container-orgaf87538" class="outline-3">
+          <h3 id="orgaf87538">Overview</h3>
+          <div class="outline-text-3" id="text-orgaf87538">
+          <p>
+          One of the most essential aspects of the project is the connection between the backend server and the web interface and robot.
+          </p>
+          
+          <p>
+          In order to support the operation of the robot and the web interface the backend system provides a myriad of services, which are secure, highly performant, and extensible.
+          </p>
+          
+          
+          <div class="figure">
+          <p><img src="./img/sdp_flowchart.png" alt="sdp_flowchart.png" />
+          </p>
+          </div>
+          </div>
+          </div>
+          
+          <div id="outline-container-org6911281" class="outline-3">
+          <h3 id="org6911281">Rationale</h3>
+          <div class="outline-text-3" id="text-org6911281">
+          </div>
+          <div id="outline-container-org85a7f56" class="outline-4">
+          <h4 id="org85a7f56">Architecture</h4>
+          <div class="outline-text-4" id="text-org85a7f56">
+          <p>
+          Having a centralised C2 (Command &amp; Control Server) allows for greater simplification and de-duplication of functionality across the various controlling entities that could be employed in the future, in addition to the Web Application that is currently in development. Any system that is capable of consuming the Claynse REST API (Representational State Transfer Application Program Interface) will be able to issue commands to the robot.
+          </p>
+          
+          <p>
+          This allows for the various elements of the system to be developed in isolation, and to be interchangeable with other components, resulting in a modular architecture.
+          </p>
+          
+          <p>
+          It is possible for the backend systems to store the metrics of the robot, and potentially use them in the future - whether for simple applications such as graphs, or more complex data analysis to identify charging patterns, command behaviours or to provide additional context to log messages.
+          </p>
+          
+          <p>
+          By centralising the issuing of commands we can ensure that only valid commands are ever given to the robot, allowing for comprehensive validation of all potential commands.
+          This abstracts substantial complexity for the hardware team: not only would this logic reduce cost (if this was to be migrated to an integrated circuit), it also allows custom rules to be added dynamically in the future - without the requirement of a firmware update. This helps to provide a seamless user experience.
+          </p>
+          </div>
+          </div>
+          
+          <div id="outline-container-org38b3726" class="outline-4">
+          <h4 id="org38b3726">REST API</h4>
+          <div class="outline-text-4" id="text-org38b3726">
+          <p>
+          It was decided that a REST API would be the best method of communication, there were a few reasons for this.
+          </p>
+          <ul class="org-ul">
+          <li>Using a REST API is much simpler - taking into account all of the constraining factors, such as development time and the technical debt involved, it was not feasible to implement our own protocol, even an internet layer protocol would be a massive undertaking.</li>
+          <li>I had considered an approach utilising a socket connection to the robot to avoid the overhead of establishing a TCP/HTTP connection each time, this would have been a mistake. This would have required the server to be able to hold open connections for each robot using the service.
+          <ul class="org-ul">
+          <li>As the popularity of the product increased this would have not been sustainable to have thousands of open socket connections to a machine</li>
+          <li>This would have caused a very large resource allocation but very low utilisation, which is a inefficient use of compute resources</li>
+          </ul></li>
+          </ul>
+          
+          <p>
+          Therefore it was decided that a REST API using the standard <code>HTTP</code> methods for interacting with the system was the most appropriate approach.
+          </p>
+          </div>
+          </div>
+          <div id="outline-container-org1f31c0d" class="outline-4">
+          <h4 id="org1f31c0d">Dockerized Application</h4>
+          <div class="outline-text-4" id="text-org1f31c0d">
+          </div>
+          <div id="outline-container-org1cd76e9" class="outline-5">
+          <h5 id="org1cd76e9">Scaling</h5>
+          <div class="outline-text-5" id="text-org1cd76e9">
+          <p>
+          This allows each instance of our backend to run independently of each other in the case we need to scale the application, it is as simple as increasing the number of instances in the swarm manager (Docker Swarm, Kubernetes).
+          </p>
+          </div>
+          </div>
+          <div id="outline-container-org08565ca" class="outline-5">
+          <h5 id="org08565ca">Deployment</h5>
+          <div class="outline-text-5" id="text-org08565ca">
+          <p>
+          The deployment of our applications is far simpler, in order to run the backend system it will be as simple as running the image on the server, again using the <code>Makefile</code>, the devops engineer would only have to run the <code>make</code> command.
+          Equally this could be done by a CI/CD pipeline.
+          </p>
+          
+          <p>
+          Other cloud providers such as Google Cloud Run &amp; AWS Lambda have the ability to upload an image directly and have it run. This has the advantage of not having to manage infrastructure and have the ability to scale to demand, spinning down to zero when not in use. This is a very efficient use of compute.
+          </p>
+          
+          <p>
+          Again looking to the future, without moving to micro-services, a Serverless Queue could be added to allow them to be buffered and rate limited to avoid overwhelming the server but still being able to receive requests.
+          Another option would be to have a load balancer, and separate servers based on geographical location very similar to how game servers manage the immense amount of traffic they are subjected to.
+          </p>
+          </div>
+          </div>
+          <div id="outline-container-org654b5f4" class="outline-5">
+          <h5 id="org654b5f4">Development</h5>
+          <div class="outline-text-5" id="text-org654b5f4">
+          <p>
+          Another key advantage of using Docker and Docker Compose is the ease of use for other developers in other teams. For example say the frontend team wants to check that their application is making the correct calls instead of deploying both into production and testing (which is a very bad practise), they can juts run both locally.
+          </p>
+          
+          <p>
+          This keeps the development costs low and reduces the development complexity, the other developers would just have to clone the backend and run the <code>make</code> command, this would start all of the backend systems locally.
+          </p>
+          </div>
+          </div>
+          <div id="outline-container-orgf9eb811" class="outline-5">
+          <h5 id="orgf9eb811">Multistage Docker Build</h5>
+          <div class="outline-text-5" id="text-orgf9eb811">
+          <p>
+          The biggest issue I faced with the backend systems was the very large image size.
+          The final size is determined by the last image used in the <code>Dockerfile</code>: in our case this is the <code>rust</code> image, whose total size, including the static assets, is <code>4.07 GB</code>.
+          </p>
+          
+          <p>
+          The <code>rust</code> image needs to contain all of the dependencies to compile the source code and statically link it against <code>libc</code>, therefore the image needs to contain the entire rust tool chain; <code>cargo</code>, <code>rustc</code>, etc, in addition to a shell, and all of the standard <code>libc</code> libraries. However, it is not possible to use a smaller final image as all of these resources and dependencies are required in order to create our final executable.
+          </p>
+          
+          <p>
+          The solution to the issue is to use a mutlistage build process.
+          We use a <code>builder</code> image which contains all of the required dependencies and software to create our executable.
+          Once this executable has been created, we can copy it to another, much smaller, image.
+          In our case we use the Google Distroless Images. This is done for a few reasons: it allows us to create images with size of around <code>28 MB</code>, which is considerably smaller, and is more secure as it does not contain a shell or other essential software that could be exploited.
+          </p>
+          </div>
+          </div>
+          <div id="outline-container-orgf83f133" class="outline-5">
+          <h5 id="orgf83f133">Consistent Environments</h5>
+          <div class="outline-text-5" id="text-orgf83f133">
+          <p>
+          From a DevOps perspective the current infrastructure is excellent it allows for the development environment that is run locally to be used in production.
+          It is as simple as cloning the code on the server and running make.
+          </p>
+          
+          <p>
+          From a team perspective this is great, it allows for every member of the team to run the full stack system by only installing Docker, if there implementation works locally it is then highly likely to work in production, giving the developer confidence in their work, ensuring more robust and better tested code finds its way into production.
+          </p>
+          
+          <p>
+          Another major advantage that is obvious is simplicity, only docker needs to be installed, no obscure or insecure dependencies are required.
+          </p>
+          </div>
+          </div>
+          </div>
+          <div id="outline-container-orgced5127" class="outline-4">
+          <h4 id="orgced5127">PostgreSQL Database</h4>
+          <div class="outline-text-4" id="text-orgced5127">
+          <p>
+          The database that was chosen for the project was the open-source, high performance, relational SQL database PostgreSQL.
+          </p>
+          
+          <p>
+          I have decided to use the industry tried and trusted PostgreSQL, due to the reasons above.
+          A relational SQL database that is fast, reliable and has extensive internal rollback functionality, in case of an error during a transaction or other operation.
+          </p>
+          
+          <p>
+          The commands to run the database migrations are detailed in the back-end systems <code>Makefile</code>, allowing them to be conveniently documented and executed by other team members.
+          </p>
+          </div>
+          
+          <div id="outline-container-org307da4f" class="outline-5">
+          <h5 id="org307da4f">High Performance</h5>
+          <div class="outline-text-5" id="text-org307da4f">
+          <p>
+          With respect to the scaling of the backend systems, unless the architectural decision was made to transfer to micro-services, a single database server would be used.
+          This means that the database must be high performance to service all of the request from the backend in a timely manner.
+          </p>
+          </div>
+          </div>
+          
+          <div id="outline-container-orgecdb134" class="outline-5">
+          <h5 id="orgecdb134">Security</h5>
+          <div class="outline-text-5" id="text-orgecdb134">
+          <p>
+          The current design ensures that the database is not accessible via the internet, actually it is only accessible to the backend systems contain running on the internal docker network. This greatly increases the overall data security of the system, the only method for data exfiltration is through the REST API.
+          </p>
+          </div>
+          </div>
+          <div id="outline-container-orgbfc4a1a" class="outline-5">
+          <h5 id="orgbfc4a1a">Migrations</h5>
+          <div class="outline-text-5" id="text-orgbfc4a1a">
+          <p>
+          All of the migrations for the system are executed through three commands in the <code>Makefile</code>: <code>make migrations-run</code>, <code>make migrations-reset</code>, and <code>make reset-database</code>.
+          </p>
+          
+          <p>
+          The <code>up.sql</code> file contains the SQL commands used to create all of the tables used in the system, in addition it also contains constraints, ensuring that the database entries remain consistent.
+          down.sql
+          The <code>down.sql</code> file contains the SQL commands used to destroy all of the tables in the database.
+          The <code>reset.sql</code> file contains the SQL commands used to remove all of the data from the tables.
+          The <code>robot.sql</code> file contains the values of the robots corresponding to the QR codes that have been generated.
+          </p>
+          </div>
+          </div>
+          </div>
+          </div>
+          <div id="outline-container-org8d27abe" class="outline-3">
+          <h3 id="org8d27abe">Services</h3>
+          <div class="outline-text-3" id="text-org8d27abe">
+          </div>
+          <div id="outline-container-orga17238e" class="outline-4">
+          <h4 id="orga17238e"><code>Auth</code> Endpoint</h4>
+          <div class="outline-text-4" id="text-orga17238e">
+          <p>
+          In order to prevent abuse or malicious attacks to the system, all of the command issuing endpoints are protected, they require that the user is Authenticated and has the correct Authorisation, before they will process the request.
+          </p>
+          
+          <p>
+          To authenticate with the backend, you will need to provide your username and password to the <code>/auth</code> endpoint, assuming the credentials are valid, you will be provided with a short lived JWT (JSON Web Token), authorising that user to access their command service in a stateless manner.
+          </p>
+          </div>
+          </div>
+          <div id="outline-container-org5cc2d8c" class="outline-4">
+          <h4 id="org5cc2d8c"><code>Command</code> Endpoint</h4>
+          <div class="outline-text-4" id="text-org5cc2d8c">
+          <p>
+          The HTTP POST method once applied to this endpoint allows the issuing of commands by some user to the system.
+          All of the required is passes via the request body, ensuring it is encrypted by the TLS/SSL protocol.
+          However, this endpoint is secured - it requires an authorisation token specifically a JWT (JSON Web Token), without a valid token a 401 Unauthorized response will be received.
+          </p>
+          
+          <p>
+          Once the request has be received, the backend middleware will take the request and validate the JWT (returning early if required), before calling the specific handler, where the command that the user has provided will be validated before being stored in the database.
+          </p>
+          </div>
+          </div>
+          <div id="outline-container-orgd409053" class="outline-4">
+          <h4 id="orgd409053"><code>Polling</code> Endpoint</h4>
+          <div class="outline-text-4" id="text-orgd409053">
+          <p>
+          The only endpoint that the robot will call is the /poll endpoint, the request to this endpoint will include essential metrics of the robot including the current Instruction the robot is performing and the current battery level of the robot.
+          </p>
+          
+          <p>
+          The server then gathers the current task the robot should be doing (the command it previoudsly issued to it), the current state of the robot (the infomation given in the request), and the next command that will be issued if any.
+          </p>
+          
+          <p>
+          One of the core rules for the system is that if the battery level of the robot is insufficient the robot will immediately abort (Abort(AbortReason::LowBattery)) the other rules allow for the various functions of the system.
+          </p>
+          
+          <p>
+          As previously discussed, we can see the Strict Type System, coming into its own, allowing all of the different types of the system to be expressed.
+          The way in which I have written the system ensures that the core rules for the system are encoded in the type system, therefore invalid states simply cannot be reached, since the system will not compile, this is a major advantage and design choice I have decided be using the Rust language idiomatically.
+          </p>
+          
+          
+          <p>
+          As previously discussed the robot will use a standard <code>HTTP</code> request to the backend system.
+          This is referred to as Polling, the robot gives some context to the backend, allowing an appropriate response to be coordinated.
+          </p>
+          
+          <p>
+          A <code>poll</code> contains the minimal set of context required by the backend, <code>robots_serial_number</code>, <code>command_id</code>, <code>status</code>, and <code>battery_level</code>.
+          </p>
+          </div>
+          
+          <div id="outline-container-org46f8c3c" class="outline-5">
+          <h5 id="org46f8c3c">Flow of the Polling Routine</h5>
+          <div class="outline-text-5" id="text-org46f8c3c">
+          <p>
+          Below is a very high level description of the flow of the <code>poll</code> routines:
+          </p>
+          <ol class="org-ol">
+          <li>The robot sends a <code>HTTP</code> request to the <code>/poll</code> endpoint</li>
+          <li>Update the status of the robot in the database
+          <ul class="org-ul">
+          <li>This is done to allow the web interface to immediately see the latest infomation about their device</li>
+          </ul></li>
+          <li>Check the battery level of the robot
+          <ul class="org-ul">
+          <li>If the value is below some predetermined value we need to <code>Abort(AbortReason::LowBattery)</code></li>
+          </ul></li>
+          <li>We need to now process the correspond <code>Command</code> for this <code>Poll</code>
+          <ul class="org-ul">
+          <li>The <code>Command</code> is retrieved from the database by the <code>command_id</code></li>
+          </ul></li>
+          <li>Return this response to the robot.</li>
+          </ol>
+          </div>
+          </div>
+          </div>
+          
+          <div id="outline-container-org025927c" class="outline-4">
+          <h4 id="org025927c">Static File Service</h4>
+          <div class="outline-text-4" id="text-org025927c">
+          <p>
+          Another essential service that the backend provides is a basic static file server, this is used to host the frontend static assets. Simply any file in the <code>static</code> directory will be served under the <code>/static</code> path.
+          </p>
+          
+          <p>
+          The other potential approach for this would have been to introduce another container, possibly using the <a href="https://hub.docker.com/_/nginx">NGINX Image</a>, to serve the content.
+          </p>
+          </div>
+          </div>
+          </div>
+          
+          <div id="outline-container-orga067147" class="outline-3">
+          <h3 id="orga067147">Interesting Implementation Details</h3>
+          <div class="outline-text-3" id="text-orga067147">
+          </div>
+          <div id="outline-container-org1232e4b" class="outline-4">
+          <h4 id="org1232e4b">Rust</h4>
+          <div class="outline-text-4" id="text-org1232e4b">
+          </div>
+          <div id="outline-container-orgcd83df9" class="outline-5">
+          <h5 id="orgcd83df9">Module System</h5>
+          <div class="outline-text-5" id="text-orgcd83df9">
+          <p>
+          Each service of the system provides is written as a separate module allowing for the system to be easily extended with additional functionality in the future, whilst maintaining a strict distinction between their functionality.
+          </p>
+          
+          <p>
+          After the Rust 2018 module system revamp, the module system is very intuitive and very flexible, allowing me to design the architecture of the code as I see fit.
+          </p>
+          </div>
+          </div>
+          <div id="outline-container-orgab188f7" class="outline-5">
+          <h5 id="orgab188f7">Performance &amp; Safety <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></h5>
+          <div class="outline-text-5" id="text-orgab188f7">
+          <p>
+          Rust is blazingly fast and memory-efficient: with no runtime or garbage collector, it can power performance-critical services, run on embedded devices, and easily integrate with other languages.
+          </p>
+          
+          <p>
+          Rust’s rich type system and ownership model guarantee memory-safety and thread-safety — enabling you to eliminate many classes of bugs at compile-time.
+          </p>
+          </div>
+          </div>
+          <div id="outline-container-orge169094" class="outline-5">
+          <h5 id="orge169094">Recoverable Errors</h5>
+          <div class="outline-text-5" id="text-orge169094">
+          <p>
+          Idiomatic Rust code uses the <code>Result&lt;T,E&gt;</code> type, to show that a function that would usually return a value of type <code>T</code>, may fail and produce an error of type <code>E</code>.  I have create a custom error type for the backend system, encoding all of the possible errors.
+          </p>
+          
+          <p>
+          I have then implemented the  <code>From&lt;ApiError&gt;</code> trait for the <code>HttpResponse</code> type, meaning that the error type can be propagated call stack and be returned as a <code>HttpResponse</code>, with an appropriate <code>HTTP Status Code</code> and description of the error.
+          The conversion is handled automatically by the try operator (<code>?</code>), which is really nice!
+          </p>
+          </div>
+          </div>
+          <div id="outline-container-org8b6e8c7" class="outline-5">
+          <h5 id="org8b6e8c7">Asynchronous</h5>
+          <div class="outline-text-5" id="text-org8b6e8c7">
+          <p>
+          The backend system is fully asynchronous and is using the newly stabilised <code>async/await</code> syntax, along with the <code>Tokio</code> executor that comes with <code>Actix Web</code>.
+          </p>
+          
+          <p>
+          The database for the backend supports concurrent access, therefore we need to take advantage of this potential performing boost.
+          Since a database operation will take multiple magnitudes more time than standard computation, we can perform other tasks whilst waiting for the <code>Future</code> to yield its value.
+          This is one of the reasons the backend system has such great performance characteristics.
+          </p>
+          </div>
+          </div>
+          </div>
+          
+          <div id="outline-container-org88d120e" class="outline-4">
+          <h4 id="org88d120e"><code>FromRequest</code> Trait Implementations</h4>
+          <div class="outline-text-4" id="text-org88d120e">
+          <p>
+          The <a href="#orga17238e"><code>Auth</code> Endpoint</a> utilises the <code>FromRequest</code> trait <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> to encapsulate all of the authentication and authorisation logic, essentially acting as <code>middleware</code> to the request <code>handler</code> by simply giving the user access to a <code>User</code> struct, containing all of the relevant information for that user.
+          </p>
+          
+          <p>
+          A <code>FromRequest</code> implementation can mutably access a <code>HttpRequest</code>, allowing the header of the request to be parsed, in our case we utilise the <code>Authorisation</code> header to provide the token to the backend.
+          If the token is valid the appropriate users information will be fetched and returned to the <code>handler</code>, so the request can be appropriately serviced - this ensures that a user cannot execute commands for another user.
+          On the other hand, if the backend was unable to validate the tokens value then the service will immediately return a <code>401 Unauthorized</code> error response.
+          </p>
+          </div>
+          </div>
+          </div>
+          </div>
+          <div id="footnotes">
+          <h2 class="footnotes">Footnotes: </h2>
+          <div id="text-footnotes">
+          
+          <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+          <a href="https://www.rust-lang.org/">https://www.rust-lang.org/</a>
+          </p></div></div>
+          
+          <div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">A Trait is a specific Rust language feature, which can be throught of in a similar way to a Haskell type class</p></div></div>
+          
+          
+          </div>
+          </div></div>
+        </div>
+    </section>
+    <!--================Concept End =================-->
 
-<div id="outline-container-org025927c" class="outline-4">
-<h4 id="org025927c">Static File Service</h4>
-<div class="outline-text-4" id="text-org025927c">
-<p>
-Another essential service that the backend provides is a basic static file server, this is used to host the frontend static assets. Simply any file in the <code>static</code> directory will be served under the <code>/static</code> path.
-</p>
 
-<p>
-The other potential approach for this would have been to introduce another container, possibly using the <a href="https://hub.docker.com/_/nginx">NGINX Image</a>, to serve the content.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orga067147" class="outline-3">
-<h3 id="orga067147">Interesting Implementation Details</h3>
-<div class="outline-text-3" id="text-orga067147">
-</div>
-<div id="outline-container-org1232e4b" class="outline-4">
-<h4 id="org1232e4b">Rust</h4>
-<div class="outline-text-4" id="text-org1232e4b">
-</div>
-<div id="outline-container-orgcd83df9" class="outline-5">
-<h5 id="orgcd83df9">Module System</h5>
-<div class="outline-text-5" id="text-orgcd83df9">
-<p>
-Each service of the system provides is written as a separate module allowing for the system to be easily extended with additional functionality in the future, whilst maintaining a strict distinction between their functionality.
-</p>
-
-<p>
-After the Rust 2018 module system revamp, the module system is very intuitive and very flexible, allowing me to design the architecture of the code as I see fit.
-</p>
-</div>
-</div>
-<div id="outline-container-orgab188f7" class="outline-5">
-<h5 id="orgab188f7">Performance &amp; Safety <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></h5>
-<div class="outline-text-5" id="text-orgab188f7">
-<p>
-Rust is blazingly fast and memory-efficient: with no runtime or garbage collector, it can power performance-critical services, run on embedded devices, and easily integrate with other languages.
-</p>
-
-<p>
-Rust’s rich type system and ownership model guarantee memory-safety and thread-safety — enabling you to eliminate many classes of bugs at compile-time.
-</p>
-</div>
-</div>
-<div id="outline-container-orge169094" class="outline-5">
-<h5 id="orge169094">Recoverable Errors</h5>
-<div class="outline-text-5" id="text-orge169094">
-<p>
-Idiomatic Rust code uses the <code>Result&lt;T,E&gt;</code> type, to show that a function that would usually return a value of type <code>T</code>, may fail and produce an error of type <code>E</code>.  I have create a custom error type for the backend system, encoding all of the possible errors.
-</p>
-
-<p>
-I have then implemented the  <code>From&lt;ApiError&gt;</code> trait for the <code>HttpResponse</code> type, meaning that the error type can be propagated call stack and be returned as a <code>HttpResponse</code>, with an appropriate <code>HTTP Status Code</code> and description of the error.
-The conversion is handled automatically by the try operator (<code>?</code>), which is really nice!
-</p>
-</div>
-</div>
-<div id="outline-container-org8b6e8c7" class="outline-5">
-<h5 id="org8b6e8c7">Asynchronous</h5>
-<div class="outline-text-5" id="text-org8b6e8c7">
-<p>
-The backend system is fully asynchronous and is using the newly stabilised <code>async/await</code> syntax, along with the <code>Tokio</code> executor that comes with <code>Actix Web</code>.
-</p>
-
-<p>
-The database for the backend supports concurrent access, therefore we need to take advantage of this potential performing boost.
-Since a database operation will take multiple magnitudes more time than standard computation, we can perform other tasks whilst waiting for the <code>Future</code> to yield its value.
-This is one of the reasons the backend system has such great performance characteristics.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org88d120e" class="outline-4">
-<h4 id="org88d120e"><code>FromRequest</code> Trait Implementations</h4>
-<div class="outline-text-4" id="text-org88d120e">
-<p>
-The <a href="#orga17238e"><code>Auth</code> Endpoint</a> utilises the <code>FromRequest</code> trait <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> to encapsulate all of the authentication and authorisation logic, essentially acting as <code>middleware</code> to the request <code>handler</code> by simply giving the user access to a <code>User</code> struct, containing all of the relevant information for that user.
-</p>
-
-<p>
-A <code>FromRequest</code> implementation can mutably access a <code>HttpRequest</code>, allowing the header of the request to be parsed, in our case we utilise the <code>Authorisation</code> header to provide the token to the backend.
-If the token is valid the appropriate users information will be fetched and returned to the <code>handler</code>, so the request can be appropriately serviced - this ensures that a user cannot execute commands for another user.
-On the other hand, if the backend was unable to validate the tokens value then the service will immediately return a <code>401 Unauthorized</code> error response.
-</p>
-</div>
-</div>
-</div>
-</div>
-<div id="footnotes">
-<h2 class="footnotes">Footnotes: </h2>
-<div id="text-footnotes">
-
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://www.rust-lang.org/">https://www.rust-lang.org/</a>
-</p></div></div>
-
-<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">A Trait is a specific Rust language feature, which can be throught of in a similar way to a Haskell type class</p></div></div>
+    <!-- ================ Start footer Area ================= -->
+    <footer class="footer-area">
+        <div class="container">
+        <div class="footer-bottom row align-items-center text-center text-lg-left no-gutters">
+            <p class="footer-text m-0 col-lg-8 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            <div class="col-lg-4 col-md-12 text-center text-lg-right footer-social">
+                Creatively crafted by SDP Group #2
+            </div>
+        </div>
+        </div>
+    </footer>
+<!-- ================ End footer Area ================= -->
 
 
-</div>
-</div></div>
-<div id="postamble" class="status">
-<p class="author">Author: Kyle Cotton</p>
-<p class="date">Created: 2021-03-31 Wed 10:15</p>
-</div>
+
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/waypoints.min.js"></script>
+<script src="js/mail-script.js"></script>
+<script src="js/contact.js"></script>
+<script src="js/jquery.form.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/mail-script.js"></script>
+<script src="js/theme.js"></script>
 </body>
 </html>

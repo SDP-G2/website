@@ -1,64 +1,287 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head>
-<title>Title</title>	
-<meta http-equiv="Content-Language" content="English" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <title>Claynce - SDP Group #2</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="vendors/animate-css/animate.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
 
-<body><div id="wrap">	<div id="header">		
-    <h1><a href="#">Claynce</a></h1>	
-    	<h2>Group 2 </h2>	</div>	<div id="menu">	
-            <ul>
-                <li class="link" id="welcome.html"   > <a href="./index.html"     >Welcome     </a></li>			
-                <li class="link" id="system.html"    > <a href="./system.html"    >System      </a></li>	
-                <li class="link" id="howitworks.html"> <a href="./howitworks.html">How it works</a></li>				
-                <li class="link" id="evaluation.html"> <a href="./evaluation.html">Evaluation  </a></li>	
-                <li class="link" id="budget.html"    > <a href="./budget.html"    >Budget      </a></li> 		
-                <li class="link" id="team.html"      > <a href="./team.html"      >Team        </a></li>					
-            </ul>
-            </div>	
-            <div id="content">
-			<div id="corps_central"> 
-				
-            <h1>Concept</h1>
-            <p>Many tennis courts spend thousands of pounds and hundreds of hours a year swiping their clay courts after plays. They repeat the same process often several times a day, spending extra time, which could instead be used to play more games. Sweeping the courts is repetitive, mundane and time-consuming.
-Claynce is a robot that is designed specifically to solve this problem. It automatically sweeps the courts for you, and only needs to be turned on and placed at a specific point on the court! You just create a task, set a time for it, and Claynce will start sweeping - no other intervention needed!
-</p>
+    <!-- Customized CSS -->
+    <link rel="stylesheet" href="css/sdp-customized/customized.css">
+</head>
+<body>
 
-            
-            <h2><a href="#Functionality">Functionality</a></h2>
-			<p><ul>
-			<li><b>Selecting a pattern:</b> there are two predefined patterns that Claynce can follow when given a task. Simply select which one you prefer in the application, and our robot will do it!
-</li>
-<li><b>Automatic localisation:</b> Claynce uses information from the markers placed on the walls of the court to determine its position relative to the court’s centre. This allows it to accurately follow any path that is given to it.
-</li>
-<li><b>Returning to a specific point:</b> once the program is finished, you don’t have to worry about walking around the court and getting the robot back from different places each time. Instead, Claynce is designed to always come back to one predetermined position (at the centre of the wall, near the net) once it’s completed. It can also start from that same position, meaning that once it’s turned on and knows its position, you won’t need to move it anywhere!
-</li>
-<li><b>Designed to work with native and any other third-party net:</b> Claynce is a versatile robot. It usually comes with its own net for sweeping the courts; however, if you already have a net of your own, you can use that one too! Simply tell us that you don’t need a net, and then just connect yours to Claynce (instructions provided in the user guide).
-</li>
-			</ul></p>      
-			
-			<h2><a href="#Future extensions">Future extensions</a></h2>
-			<p><ul>
-			<li><b>Work on other types of surfaces:</b> Claynce is designed with extensions in mind, meaning that in the future it may be used to clean other courts as well as clay ones. The only things that need to be added are a mop for hard surfaces, or maybe even a sprinkler for grass courts! The robot’s net is detachable, so new cleaning supplies can just be put in the exact same place without extra work.
-</li>
-<li><b>Act as a general assistant:</b> our robot’s versatile navigation algorithm already allows it to travel to random predefined points on the court. So with some modifications, Claynce might be able to determine your location and come to you wherever you are! By adding some kind of holder, it would also be possible for the robot to bring something to you.
-</li>
-			</ul></p>
-			
-			<h2><a href="#Videos">Videos/Images/Interactive Interfaces</a></h2>		
-			<p>Throughout this page, you should add videos/interactive apps/images to your sections if available/appropriate</p>
-			
-			<h3>Examples:</h3>
-			
-			<p>Link to youtube video</p>
-			<iframe width="764" height="430" src="https://www.youtube.com/embed/_sBBaNYex3E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
-			<p>Link embedded video from source</p>
-			<video width="764" height="430" controls>
-			  <source src="https://sdp2020.gitlab.io/grouptemplate/videos/test_video_atlas.mp4" type="video/mp4">
-			</video>
+    <!--================Header Menu Area =================-->
+    <header class="header_area">	
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <h1 id="claynce-header-text">Claynce</h1>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav ml-auto">
+                            <li class="nav-item"><a class="nav-link" href="index.html">WELCOME</a></li> 
+                            <li class="nav-item"><a class="nav-link" href="system.html">SYSTEM</a></li> 
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" 
+                                aria-haspopup="true" aria-expanded="false">HOW IT WORKS</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="overview.html">Overview</a></li> 
+                                    <li class="nav-item"><a class="nav-link" href="frontend.html">Front-End</a></li> 
+                                    <li class="nav-item"><a class="nav-link" href="backend.html">Back-End</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="robot.html">Robot</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="evaluation.html">EVALUATION</a></li>     
+                            <li class="nav-item"><a class="nav-link" href="budget.html">BUDGET</a></li>
+                            <li class="nav-item"><a class="nav-link" href="team.html">TEAM</a></li>     
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--================Header Menu Area =================-->
 
 
-            </div>	
-            <div style="clear: both;"> </div>		
-            <div id="footer">Page design based on a <a href="http://www.free-css-templates.com/">Free CSS Template</a></div>	</div></div>
-</body></html>
+    <!--================Hero Banner Area Start =================-->
+    <section class="hero-banner d-flex align-items-center">
+        <div class="container text-center">
+            <h2>System</h2>
+        </div>
+    </section>
+    <!--================Hero Banner Area End =================-->
+
+    <!--================Concept Introduction Start =================-->
+    <section class="sample-text-area">
+        <div class="container">
+          <h3 class="text-heading title_color">Concept</h3>
+          <p class="sample-text">
+            Many tennis courts spend thousands of pounds and hundreds of hours a year swiping their clay courts after plays. 
+            They repeat the same process often several times a day, spending extra time, which could instead be used to play more games. 
+            Sweeping the courts is repetitive, mundane and time-consuming. 
+            Claynce is a robot that is designed specifically to solve this problem. 
+            It automatically sweeps the courts for you, and only needs to be turned on and placed at a specific point on the court! 
+            You just create a task, set a time for it, and Claynce will start sweeping - no other intervention needed!
+          </p>
+        </div>
+      </section>
+    <!--================Concept End =================-->
+
+    <!--================ Start Functionality Area =================-->
+    <section class="faq_area area-padding-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="area-heading">
+                        <h3 class="text-heading title_color">Functionality</h3>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-6">
+                    <div class="accordion" id="accordionExample">
+
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                        Selecting a Pattern
+                                    </button>
+
+                                </h5>
+                            </div>
+
+                            <div id="collapseThree" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    There are two predefined patterns that Claynce can follow when given a task. 
+                                    Simply select which one you prefer in the application, and our robot will do it!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        Automatic Localisation
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    Claynce uses information from the markers placed on the walls of 
+                                    the court to determine its position relative to the court’s centre. 
+                                    This allows it to accurately follow any path that is given to it.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-6">
+                    <div class="accordion" id="accordionExample2">
+
+                        <div class="card">
+                            <div class="card-header" id="headingSix">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                                        Returning to a Specific Point
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div id="collapseSix" class="collapse show" aria-labelledby="headingSix" data-parent="#accordionExample2">
+                                <div class="card-body">
+                                    Once the program is finished, 
+                                    you don’t have to worry about walking around the court and getting the robot back from different places each time. 
+                                    Instead, Claynce is designed to always come back to one predetermined position (at the centre of the wall, near the net) 
+                                    once it’s completed. It can also start from that same position, 
+                                    meaning that once it’s turned on and knows its position, you won’t need to move it anywhere!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header" id="headingSeven">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                        Designed to Work with Native and any other Third-Party Net
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample2">
+                                <div class="card-body">
+                                    Claynce is a versatile robot. It usually comes with its own net for sweeping the courts; 
+                                    however, if you already have a net of your own, you can use that one too! 
+                                    Simply tell us that you don’t need a net, and then just connect yours to Claynce (instructions provided in the user guide).
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ End Functionality Area =================-->
+
+    <!--================ Start Future Extensions Area =================-->
+    <section class="faq_area area-padding-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="area-heading">
+                        <h3 class="text-heading title_color">Future Extensions</h3>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-6">
+                    <div class="accordion" id="accordionExample3">
+
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Work on Other Types of Surfaces
+                                    </button>
+
+                                </h5>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample3">
+                                <div class="card-body">
+                                    Claynce is designed with extensions in mind, meaning that in the future 
+                                    it may be used to clean other courts as well as clay ones. 
+                                    The only things that need to be added are a mop for hard surfaces, 
+                                    or maybe even a sprinkler for grass courts! The robot’s net is detachable, 
+                                    so new cleaning supplies can just be put in the exact same place without extra work.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-6">
+                    <div class="accordion" id="accordionExample4">
+
+                        <div class="card">
+                            <div class="card-header" id="headingSix">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+                                        Act as a General Assistant
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div id="collapseEight" class="collapse show" aria-labelledby="headingSix" data-parent="#accordionExample4">
+                                <div class="card-body">
+                                    our robot’s versatile navigation algorithm already allows it to travel to random predefined points on the court. 
+                                    So with some modifications, Claynce might be able to determine your location and come to you wherever you are! 
+                                    By adding some kind of holder, it would also be possible for the robot to bring something to you.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ End Faq Area =================-->
+
+    
+
+
+
+    <!-- ================ Start footer Area ================= -->
+    <footer class="footer-area">
+        <div class="container">
+        <div class="footer-bottom row align-items-center text-center text-lg-left no-gutters">
+            <p class="footer-text m-0 col-lg-8 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            <div class="col-lg-4 col-md-12 text-center text-lg-right footer-social">
+                Creatively crafted by SDP Group #2
+            </div>
+        </div>
+        </div>
+    </footer>
+<!-- ================ End footer Area ================= -->
+
+
+
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/waypoints.min.js"></script>
+<script src="js/mail-script.js"></script>
+<script src="js/contact.js"></script>
+<script src="js/jquery.form.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/mail-script.js"></script>
+<script src="js/theme.js"></script>
+</body>
+</html>
