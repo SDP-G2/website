@@ -80,7 +80,7 @@
     <!--================Evaluation Introduction Start =================-->
     <section class="sample-text-area">
         <div class="container">
-          <h3 class="text-heading title_color">How Well does Our System Perform</h3>
+          <h3 id="header-title" class="text-heading title_color">How Well does Our System Perform</h3>
           <p class="sample-text">
               The following section here shall address the intensive and in-depth usability and evaluation testing conducted.
           </p>
@@ -88,13 +88,10 @@
 
           <div id="evaluation-section"> 
 				            
-            <h2><a href="#tests">Evaluation Tests</a></h2>
-            <p>Show the results of testing where available. This can include tables, 
-              graphs, videos etc. Be careful to present data in an appropriate manner and be 
-              clear about the conclusions drawn from whatever it is you present</p>    
+            <h3 id="header-title" class="text-heading title_color">Evaluation Tests</h3>
             
               <div>
-                <h3>Visual Localization Tests</h3>
+                <h4 id="subheader-title" class="text-heading title_color">Visual Localization Tests</h4>
                 <h5>Purpose</h5>
                 <p>
                   The purpose of this test was to determine the accuracy of the primary localization system used by our robot.                </p>
@@ -118,7 +115,7 @@
               </div>
         
               <div>
-                <h3>Hardware-Backend Integration Tests</h3>
+                <h4 id="subheader-title" class="text-heading title_color">Hardware-Backend Integration Tests</h4>
                 <h5>Purpose</h5>
                 <p>
                   The main purpose of the hardware-backend integration tests is to determine whether the robot's controller can correctly manage various states of the robot, execute (or not) commands in given states, fetch tasks from the server, and update the database with the current state of the task. It is especially important as many subsystems have to properly cooperate to carry out a specific task. What is more, robot states are more fine-grained than the state of the tasks that are store in the server, so the synchronisation between the robot and the server has to occur in a specific order and at specific phases of command execution.
@@ -142,7 +139,7 @@
                 </p>
               </div>
               <div>
-                <h3>Measuring Pattern Execution Time</h3>
+                <h4 id="subheader-title" class="text-heading title_color">Measuring Pattern Execution Time</h4>
                 <p>
                   Measuring the actual time of the program execution turned out to be a difficult task. We had only one machine capable of running the simulation and in that machine, the simulation rate oscillated around 0.05-0.10x the actual time. Meaning that it took from 10 to 20 seconds for 1 second to pass in the simulation. For that reason, we had to make some "smart" estimates regarding the execution times of our patterns, as it was infeasible to carry out multiple trials using full setup.
                 </p>
@@ -196,7 +193,7 @@
               </div> -->
             
             <div id="user-tests-div">
-                <h3><a href="#usertests">Accessibility and Usability Tests</a></h3>
+                <h3 id="header-title" class="text-heading title_color">Accessibility and Usability Tests</h3>
 
                 <h5>User Interface Testing</h5>
                 <p>Our team truly believes in giving each user a rich experience to control their Claynce robot with greater ease.
@@ -314,7 +311,7 @@
                   <p>For more details, please refer to the following document:
                     <a href="assets/user-report/Accessibility _ Usability Testing - Sheet1.pdf">Userability Testing Results</a></p>
                                   
-            <h2><a href="#Diagrams">Main Areas of Improvement</a></h2>
+            <h3 id="header-title" class="text-heading title_color">Main Areas of Improvement</h3>
             <h4>Evaluation</h4>		
             <p>What did you learn from your testing? How did your evaluation/user testing change your system?</p>
 
@@ -326,17 +323,10 @@
                       radio buttons for clear command instructions, and activity logs as a management tool for the Claynce bot.
                       In addition, our team has ensured our specialized selection of visuals to ease the navigation
                       "learning-curve" of the user.</p>
-
-            <h2>Resources</h2>
-            <ol>
-              <li>Howe, Justin. "Accessibility and Usability Testing Document"</li> 
-              <li>Howe, Justin. "Userability Testing Results"</li> 
-              <li>All resources are conducted in MLA style.</li>
-            </ol>
        
             </div> 
 
-      </div>
+          </div>
 
 
         </div>
