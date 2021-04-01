@@ -85,20 +85,15 @@
                 <section>
                   <h1>Robot Localization Techniques</h1>
                   <p>
-                    A tennis courts is a challenging environment from robot localization perspective.
-                    There is a number of features that contribute to such state of things:
+                    A tennis court is a challenging environment from a robot localization perspective. Several features contribute to such a state of things:
                   </p>
-                  <ul>
+                  <ul style="list-style-type: circle;">
                     <li>Big area</li>
                     <li>Symmetric layout</li>
-                    <li>Few characterstic keypoints</li>
+                    <li>Few characteristic keypoints</li>
                   </ul>
                   <p>
-                    For that reasons, many common localization techniques such as SLAM with LiDAR perform rather poorly (according to our SDP Navigation Expert).
-                    Therefore, we decided to employ more innovative visual localization technique using a set of ArUco markers.
-                    It requires the court to be altered a bit by placing the markers around the court, but it is not intrusive as the markers can be placed outside the court itself, not interrupting the flow of the game.
-                    It does not come without any pitfalls, but suppported by the fine-tuned odometry it provides a satisfactory result,
-                    that can reliably orient our system on the tennis court.
+                    For that reasons, many common localization techniques such as SLAM with LiDAR perform rather poorly (according to our SDP Navigation Expert). Therefore, we decided to employ a more innovative visual localization technique using a set of ArUco markers. It requires the court to be altered a bit by placing the markers around the court, but it is not intrusive as the markers can be placed outside the court itself, not interrupting the flow of the game. It does not come without any pitfalls, but supported by the fine-tuned odometry it provides a satisfactory result, that can reliably orient our system on the tennis court.
                   </p>
                   <figure>
                     <img src="./resources/imgs/aruco.png" class="centeredBlock" width="100" height="100"/>
@@ -106,50 +101,45 @@
                   </figure>
       
                   <p>
-                    Next sections provide more in-depth explanaition of the theoretical background and our implementation of those systems.
+                    The next sections provide a more in-depth explanation of the theoretical background and our implementation of those systems.
                   </p>
       
       
                   <h3>ArUco Visual Localization</h3>
       
                   <p>
-                    The internal map of the environment consists of locations and poses of ArUco markers in the tennis court environment.
-                    Currently, the translation and orientation of markers, with respect to origin of the "world" coordinate system (center of the court),
-                    is determined during the system setup phase.
-                    The user places markers at known positions around the court and contacts our team specifying placement of the markers
-                    so we can send them Claynce with approprate court map preinstalled.
+                    The internal map of the environment consists of locations and poses of ArUco markers in the tennis court environment. Currently, the translation and orientation of markers, with respect to the origin of the "world" coordinate system (centre of the court), is determined during the system setup phase. The user places markers at known positions around the court and contacts our team specifying the placement of the markers so we can send them Claynce with the appropriate court map preinstalled.
                   </p>
                   <p>
-                    In order not to overconstrain the user. We do not require exact positioning of the markers.
-                    Instead we prepared a set of guidelines regarding layout of ArUco markers. Following these recommendations ensures that the system behaves as efficiently as possible:
+                    In order not to over constrain the user. We do not require the exact positioning of the markers. Instead, we prepared a set of guidelines regarding the layout of ArUco markers. Following these recommendations ensures that the system behaves as efficiently as possible:
                   </p>
-                  <uL>
+                  <ul style="list-style-type: circle;">
                     <li>Markers should be placed along the court, on both sides - there is no need to have markers on the ends of the court</li>
                     <li>Markers should be placed vertically</li>
-                    <li>Markers should be placed 60 centimeters above the ground - so they don't get covered with dusty clay that easily</li>
+                    <li>Markers should be placed 60 centimetres  above the ground - so they don't get covered with dusty clay that easily</li>
                     <li>Markers should not be covered by any objects</li>
                     <li>Markers shouldn't be placed further than 9 meters away from the court’s centerline - so the robot can detect them more or less in the middle of the tennis court and correct the pose estimation error accumulated when navigating using odometry</li>
                     <li>Markers should be 2 meters away from each other - this ensures that they are distributed uniformly + robot can see 2-3 markers at most times</li>
-                  </uL>
+                  </ul>
                   <img src="./resources/imgs/aruco_layout.png" class="centeredBlock" />
       
                   <p>
-                    This is a temporary solution implemented in the first prototype of Claynce that enabled us to create a proof of concept.
+                    This is a temporary solution implemented in the prototype of Claynce that enabled us to create a proof of concept.
                     In future development we would like to:
                   </p>
                   <ol>
                     <li>Create a configuration panel in our app, so the user can dynamically specify/update the positions of the markers associated with the robot.</li>
                     <li>Implement automatic <a href="http://wiki.ros.org/aruco_mapping">ArUco mapping</a> that could enable the robot itself to generate the court map.</li>
-                    <li>Add many-to-many relationship between court maps and robots, so one robot could be used on multiple courts without the need of reconfiguration.</li>
+                    <li>Add a many-to-many relationship between court maps and robots, so one robot could be used on multiple courts without the need for reconfiguration.</li>
                   </ol>
                   <p>
-                    Going back to what we currently have, the translation and rotation of each marker is hardcoded in robot's software.
+                    Going back to what we currently have, the translation and rotation of each marker are hardcoded in the robot's software.
                     Each ArUco marker has a unique ID with which its positions is associated and published as a static transform from the world coordinate frame to the coordinate system of the ArUco marker.
                   </p>
       
                   <p>
-                    In order to make the pose estimation as accurate as possible, our robot needs to see some markers.
-                    For that, we use 3 Full HD Raspbery Pi cameras. Higher resolution helps us to more accurately determine the position of the robot with respect to the marker.
+                    To make the pose estimation as accurate as possible, our robot needs to see some markers.
+                    For that, we use 3 Full HD Raspberry Pi cameras. Higher-resolution helps us to more accurately determine the position of the robot with respect to the marker.
                     We are willing to sacrifice the higher ratecenteredImg of pose estimations due to higher resolution, as the frequency is not as crucial when we have 3 cameras working simultaneously.
                   </p>
                   <p>
@@ -158,11 +148,8 @@
                     One camera at the back is responsible for detecting markers when moving away from the markers.
                   </p>
                   <p>
-                    Because it turns out that detecting markers which are at the angle with respect to the camera gives better results.
-                    The range of marker detection of front cameras is set to 9 meteres,
-                    whilst the rear one is limited to 5 meters only.
-                    The values has been set based on the results of our tests, that are presented in the <a href="evaluation.html">Evaluation page</a>.
-                    This way, the position estimation error should not exceed 50 centimeters.
+                    Because it turns out that detecting markers that are at the angle to the camera gives better results. The range of marker detection of front cameras is set to 9 meters, whilst the rear one is limited to 5 meters only. The values have been set based on the results of our tests, which are presented on thee <a href="evaluation.html">Evaluation page</a>.
+                    This way, the position estimation error should not exceed 50 centimetres.
                   </p>
       
                   <p>
@@ -177,7 +164,7 @@
       
                   <figure>
                     <img src="./resources/imgs/detected_markers.png" class="centeredBlock"/>
-                    <figcaption style="text-align: center;">Example of marker detection. Four markers have been detected, but only three leftmost are within the range for pose estimation  .</figcaption>
+                    <figcaption style="text-align: center;">Example of marker detection. Four markers have been detected, but only three leftmost are within the range for pose estimation.</figcaption>
                   </figure>
       
       
@@ -186,7 +173,7 @@
                   </p>
                   <ol>
                     <li>Initialise an empty list of pose estimates.</li>
-                    <li>Get transform from the camera to robot's base link coordinate system.</li>
+                    <li>Get transform from the camera to the robot's base link coordinate system.</li>
                     <li>Detect markers in the frame.</li>
                     <li>Filter out the ArUcos that are too far for reliable post estimation.</li>
                     <li>For each ArUco in a list of ArUcos:
@@ -202,9 +189,7 @@
                     <li>Return the averaged x, y, yaw over all estimates as the final estimate.</li>
                   </ol>
                   <p>
-                    Below you can see the visual localization in action. The green arrow in the video represents the actual position of the robot. The red one is the position estimate.
-                    The axes on the top represent positions of the markers. One can see that at the beginning the estimate is far from the actual position (estimates diverge from actual position when robot uses only odometry).
-                    The moment in which camera detects markers on the wall, the pose is updated with much more accurate estimate.
+                    Below you can see the visual localization in action. The green arrow in the video represents the actual position of the robot. The red one is the position estimate. The axes on the top represent the positions of the markers. One can see that at the beginning the estimate is far from the actual position (estimates diverge from the actual position when the robot uses only the odometry). The moment when the camera detects markers on the wall, the pose is updated with a much more accurate estimate.
                   </p>
                   <video class="centeredBlock" width="420" height="480" controls style="margin-bottom: 40px;">
                     <source src="./resources/videos/visual_nav_sample.mp4" type="video/mp4">
@@ -214,23 +199,17 @@
                 <section>
                   <h1>Odometry</h1>
                   <p>
-                    Because of the way the cameras are placed and configured,
-                    there is a "blindzone" on the court in which the robot cannot determine its position from the ArUco markers.
-                    This happens because markers on both sides of the court are too far from the robot.
+                    Because of the way the cameras are placed and configured, there is a "blind zone" on the court in which the robot cannot determine its position from the ArUco markers. This happens because markers on both sides of the court are too far from the robot.
                   </p>
                   <figure>
                     <img src="./resources/imgs/blind_zone.png" class="centeredBlock" height="300px" />
-                    <figcaption style="text-align: center;">Blindzone when moving to the north. Adapted from: <a href="https://www.promain.co.uk/media/catalog/product/cache/8fa5dff5584a74f50bf3124aec91b902/2/0/20-d-45-brick-red.gif" >source</a></figcaption>
+                    <figcaption style="text-align: center;">Blind zone when moving to the north. Adapted from: <a href="https://www.promain.co.uk/media/catalog/product/cache/8fa5dff5584a74f50bf3124aec91b902/2/0/20-d-45-brick-red.gif" >source</a></figcaption>
                   </figure>
                   <p>
-                    Since the robot enters blinzdone after every turn away from the markers, it is important that the robot still can assess its position.
-                    For this reason, we implemented odometry as fallback localization procedure. It is a "fallback" method in a sense that visual localization always takes precedence over odometry.
-                    It's purpose is to get the robot through the blindzone until it can again reliably detect the markers on the other side of the court.
+                    Since the robot enters the blind zone after every turn away from the markers, it is important that the robot still can assess its position. For this reason, we implemented odometry as a fallback localization procedure. It is a "fallback" method in the sense that visual localization always takes precedence over odometry. Its purpose is to get the robot through the blind zone until it can again reliably detect the markers on the other side of the court.
                   </p>
                   <p>
-                    Odometry has been implemated based on the <a href="https://www.hmc.edu/lair/ARW/ARW-Lecture01-Odometry.pdf">"Odometry Kinematics"</a> slides from Harvey Mudd College. The main parameters: wheel radius and wheel gap, have been tuned using experimnetal approach.
-                    Their final values vary significantly from "theoretical" ones. But they ensure that wheel encoder readings give reliable estimation for the forward motion and 90-degree turns. The tasks that are the most crucial for entering and leaving the blindzone.
-                    Below you can see that odometry does well when moving straigh and performing ~90-degree turns, but works much worse with other turns.
+                    Odometry has been implemented based on the <a href="https://www.hmc.edu/lair/ARW/ARW-Lecture01-Odometry.pdf">"Odometry Kinematics"</a> slides from Harvey Mudd College. The main parameters: wheel radius and wheel gap, have been tuned using an experimental approach. Their final values vary significantly from "theoretical" ones. But they ensure that wheel encoder readings give a reliable estimation for the forward motion and 90-degree turns. The tasks that are the most crucial for entering and leaving the blind zone. Below you can see that odometry does well when moving straight and performing ~90-degree turns, but works much worse with other turns.
                   </p>
                   <video class="centeredBlock" width="420" height="480" controls style="margin-bottom: 40px;">
                     <source src="./resources/videos/odom_sample.mp4" type="video/mp4">
@@ -240,20 +219,16 @@
                 <section>
                   <h1>Pattern Path Generation</h1>
                   <p>
-                    Currently Claynce supports 2 patterns: zig-zag and circular. A path that the robot has to follow in a selected sweeping program is generated in a recursive fashion. This makes it highly extensible to suit everyone's needs. The algorithm starts at the net and finshes at the end of the court.
-                    Path is generated for one half only and then the points for the other half are generated by reflecting existing path along the net. This ensures two things.
-                    Firstly, that the robot starts sweeping the second half on the same side that it finished cleaning the first one. Secondly, that the robot finishes the program on the opposite half and the same side of the court on which it started the pattern.
-                    Finally, the robot gets an instruction to come back to the net so the user can pick it up.
+                    Currently, Claynce supports 2 patterns that are widely used by the tennis community: zig-zag and circular. A path that the robot has to follow in a selected sweeping program is generated recursively. This makes it highly extensible to suit everyone's needs. The algorithm starts at the net and finishes at the end of the court. The path is generated for one half only and then the points for the other half are generated by reflecting the existing path in the net. This ensures two things. Firstly, that the robot starts sweeping the second half on the same side that it finished cleaning the first one. Secondly, that the robot finishes the program on the opposite half and the same side of the court on which it started the pattern. Finally, the robot gets an instruction to come back to the net so the user can pick it up.
                   </p>
                   <p>
-                    Our algorithms are highly parametrised and very flexible to suite every user needs. Currently we have fixed parameters for pattern generation, but in the future we would like to expose those parameters via an app so users can create patterns that are adapted to their personal requirements.
-                    Regardles of the pattern, module generating paths takes into account:
+                    Our algorithms are highly parametrised and very flexible to suit every user needs. Currently, we have fixed parameters for pattern generation, but in the future, we would like to expose those parameters via an app so users can create patterns that are adapted to their requirements. Regardless of the pattern, module generating paths takes into account:
                   </p>
-                  <ul>
+                  <ul style="list-style-type: circle;">
                     <li>width of the court</li>
                     <li>length of the court</li>
                     <li>width of the net</li>
-                    <li>desired net overlap when robot traverses the court</li>
+                    <li>desired net overlap when the robot traverses the court</li>
                   </ul>
                   <figure class="centeredBlock">
                     <img src="./resources/imgs/zig-zag.png" width="49%" />
