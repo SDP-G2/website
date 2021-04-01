@@ -97,26 +97,23 @@
                 <h3>Visual Localization Tests</h3>
                 <h5>Purpose</h5>
                 <p>
-                  The purpose of this test was to determine the accuracy of the primary localization system used by our robot.
-                </p>
+                  The purpose of this test was to determine the accuracy of the primary localization system used by our robot.                </p>
                 <h5>Method</h5>
                 <p>
-                  To determine efficiency of ArUco localisation testing was conducted independently of other localisation methods. 50x50cm ArUco tag was put at the origin of the world, facing y-axis. Robot facing the opposite of y-axis was put in 16,922 different positions along lines x=[-3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3] (all values are in meters).
-                  At each position, the distance between actual position and the estimated position (error) was measured. The resulting error heatmap is presented below.
+                  To determine the efficiency of ArUco localisation testing was conducted independently of other localisation methods. 50x50cm ArUco tag was put at the origin of the world, facing the y-axis. Robot facing the opposite of y-axis was put in 16,922 different positions along lines x=[-3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3] (all values are in meters). At each position, the distance between the actual position and the estimated position (error) was measured. The resulting error heatmap is presented below.
                 </p>
                 <figure>
                   <img class="centeredBlock" src="resources/imgs/aruco_qa.png" />
                 </figure>
                 <h5>Result Interpretation</h5>
                 <p>
-                  Not surprisingly, the closer robot is to the marker, the more accurate is its estimate. This has a crucial importance for determining the effective range for marker detection. 
-                  Technically, we could detect the marker from a big distance (e.g. 11 meters), but this test tells us that estimate based on such marker is likely to be inaccurate.
+                  ot surprisingly, the closer robot is to the marker, the more accurate is its estimate. This has crucial importance for determining the effective range for marker detection. Technically, we could detect the marker from a big distance (e.g. 11 meters), but this test tells us that estimate based on such a marker is likely to be inaccurate.
                 </p>
                 <p>
-                  Moreover, position estimates tend to be more accurate when robot sees the marker at an angle rather than when the marker is facing the camera.
+                  Moreover, position estimates tend to be more accurate when the robot sees the marker at an angle rather than when the market is facing the camera.
                 </p>
                 <p>
-                  This knowledge resulted in a improved design of the robot. We maximised the ArUco detection range by rotating fron cameras of the robot by 30 degres. At the same time, we limitted the detection range for the rear camera to guarantee that the estimates before entering the blindzone are accurate.  
+                  This knowledge resulted in an improved design of the robot. We maximised the ArUco detection range by rotating the front cameras of the robot by 30 degrees. At the same time, we limited the detection range for the rear camera to guarantee that the estimates before entering the blind zone are accurate.
                 </p>
               </div>
         
@@ -124,48 +121,43 @@
                 <h3>Hardware-Backend Integration Tests</h3>
                 <h5>Purpose</h5>
                 <p>
-                  Main purpose of the hardware-backend integration tests is to determine whether the robot's controller is able to correctly manage various states of the of the robot, execute (or not) commands in given states, fetch tasks from the server, and update the database with the current state of the task.
-                  It is especiallly important as many subsystems have to properly cooperate in order to carry out specifc task. What is more, robot states are more fine grained than state of the tasks that are store in the server, so the synchronisation between the robot and the server has to occur in specific order and at specific phases of command execution.
+                  The main purpose of the hardware-backend integration tests is to determine whether the robot's controller can correctly manage various states of the robot, execute (or not) commands in given states, fetch tasks from the server, and update the database with the current state of the task. It is especially important as many subsystems have to properly cooperate to carry out a specific task. What is more, robot states are more fine-grained than the state of the tasks that are store in the server, so the synchronisation between the robot and the server has to occur in a specific order and at specific phases of command execution.
                 </p>
                 <h5>Method</h5>
                 <p>
                   Hardware modules integration has been evaluated by executing different scenarios and measuring in how many trials the system behaves as expected. The following scenarios have been tested:
                 </p>
                 <ol>
-                  <li>Robot shuts down after it receives Abort Safety command in Idle state</li>
-                  <li>Robot shuts down after it receives Abort LowBattery command in Idle state</li>
+                  <li>Robot shuts down after it receives Abort Safety command in an idle state</li>
+                  <li>Robot shuts down after it receives Abort LowBattery command in idle state</li>
                   <li>Robot executes ZigZag Task</li>
                   <li>Robot does not execute issued Circular Task while executing ZigZag Task</li>
-                  <li>Robot does not shut down when it receives Abort LowBattery Command during cleaning task</li>
-                  <li>Robot shuts down when when it receives Abort Safety Command during cleaning task</li>
+                  <li>Robot does not shut down when it receives Abort LowBattery Command during the cleaning task</li>
+                  <li>Robot shuts down when it receives Abort Safety Command during the cleaning task</li>
                   <li>Robot performs Circular task that is scheduled in the future at the appropriate time</li>
                 </ol>
                 <h5>Results and Interpretation</h5>
                 <p>
-                  We have executed each scenario 5 times with a 100% success rate. The system behaving as expected in each test case gave us confidence that the subsystems has been integrated correctly.
+                  We have executed each scenario 5 times with a 100% success rate. The system behaving as expected in each test case gave us confidence that the subsystems have been integrated correctly.
                 </p>
               </div>
               <div>
                 <h3>Measuring Pattern Execution Time</h3>
                 <p>
-                  Measuring the actual time of the program execution turned out to be a difficult task. We had only one machine capable of running the simulation and in that machine the simulation rate oscillated around 0.05-0.10x the actual time. Meaning that it took from 10 to 20 seconds for 1 second to pass in the simulation.
-                  For that reason we had to make some "smart" estimates regarding the execution times of our patterns, as it was infeasible to carry out multiple trials using full setup.
+                  Measuring the actual time of the program execution turned out to be a difficult task. We had only one machine capable of running the simulation and in that machine, the simulation rate oscillated around 0.05-0.10x the actual time. Meaning that it took from 10 to 20 seconds for 1 second to pass in the simulation. For that reason, we had to make some "smart" estimates regarding the execution times of our patterns, as it was infeasible to carry out multiple trials using full setup.
                 </p>
                 <p>
-                  We decided to measure how much time it takes to move the robot from point A on the one side of the court to point B on the other side of the court in a straight line fashion. 
-                  We compared the results for two cases: 
+                  We decided to measure how much time it takes to move the robot from point A on the one side of the court to point B on the other side of the court in a straight-line fashion. We compared the results for two cases:
                 </p>
                 <ol>
                   <li>the robot blindly moved from A to B</li>
                   <li>the robot used our navigation module that utilises odometry and ArUco navigation</li>
                 </ol>
                 <p>
-                  Not surprisingly, the second case took longer than the first one. On average by 19%. There are two main reasons for that. 
-                  Firstly, when using ArUco navigation there is some "jerky" motion caused by the inaccuarate pose estimation making the robot adjust it's pose.
-                  Secondly, due to drag and direction estimation inaccuracy. Robot does not move in a straight line, rather than a curve.  
+                  Not surprisingly, the second case took longer than the first one. On average by 19%. There are two main reasons for that. Firstly, when using ArUco navigation there is some "jerky" motion caused by the inaccurate pose estimation making the robot adjust its pose. Secondly, due to drag and direction estimation inaccuracy. The robot does not move in a straight line, rather than a curve.
                 </p>
                 <p>
-                  Knowning that, we run the simulation without using the ArUco navigation which speeded up the simulation to bearable time. In such circumstances, we achieved following results:
+                  Knowing that we simulated cleaning programs without using the ArUco navigation which speeded up the simulation to bearable time. In such circumstances, we achieved the following results:
                 </p>
                 <table>
                   <tr>
@@ -188,13 +180,10 @@
                   </tr>
                 </table>
                 <p>
-                  We find the estimated times to be within acceptable range. Zig-Zag pattern which lasts almost 12 minutes falls little behind the time it takes for an average person to sweep the court (from our research it is around 5 minutes per half).
-                  For the circular pattern this time is over 2 times longer, but at the same time circular traverses the same leg two times. However, due to its duration, we don't expect people using it midgame. It would rather act as a start/end of day court maintenance program.
-                  It is important to stress the fact that the exact time results heavily depends on the configuration of the cleaning patterns. As the choice of parameters for pattern generation might differ between users.
+                  We find the estimated times to be within an acceptable range. Zig-Zag pattern which lasts almost 12 minutes falls a little behind the time it takes for an average person to sweep the court (from our research it is around 5 minutes per half). For the circular pattern this time is over 2 times longer, but at the same time circular traverses the same leg two times. However, due to its duration, we don't expect people to use it midgame. It would rather act as a start/end of day court maintenance program. It is important to stress the fact that the exact time results heavily depend on the configuration of the cleaning patterns. As the choice of parameters for pattern generation might differ between users.
                 </p>
                 <p>
-                  Despite Claynce being slower than human player, these 10 minutes are freed for players / court maintainers. In this time they can warm-up, stretch, rest, talk with the partner, or clean up different parts of the court.  
-                  Additionally.
+                  Despite Claynce being slower than a human player, these 10 minutes are freed for players/court maintainers. In this time they can warm-up, stretch, rest, talk with the partner, or clean up different parts of the court. 
                 </p>
               </div>
               <!-- <div>
