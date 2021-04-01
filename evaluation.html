@@ -23,6 +23,13 @@
       margin-left: auto; 
       margin-right: auto;
     }
+    /* table {
+      width: 100%;
+    }
+    td, th {
+      border: 1px solid black;
+      text-align: center;
+    } */
     </style>
 
     <!-- Customized CSS -->
@@ -156,20 +163,22 @@
                 <p>
                   Knowing that we simulated cleaning programs without using the ArUco navigation which speeded up the simulation to bearable time. In such circumstances, we achieved the following results:
                 </p>
-                <table>
-                  <tr>
-                    <th>Pattern Type</th>
-                    <th>Repetitions</th>
-                    <th>(Min - Max) Running Time w/o. ArUco localization</th>
-                    <th>Estimated (Min - Max) Running Time w. ArUco localization</th>
-                  </tr>
-                  <tr>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Pattern Type</th>
+                      <th scope="col">Repetitions</th>
+                      <th scope="col">(Min - Max) Running Time w/o. ArUco localization</th>
+                      <th scope="col">Estimated (Min - Max) Running Time w. ArUco localization</th>
+                    </tr>
+                </thead>
+                  <tr style="text-align: center;">
                     <td>Zig-Zag</td>
                     <td>10</td>
                     <td>9m 28s - 10m 6s</td>
                     <td>11m 16s - 12m 1s</td>
                   </tr>
-                  <tr>
+                  <tr style="text-align: center;">
                     <td>Circular</td>
                     <td>10</td>
                     <td>23m 13s - 23m 41s</td>
@@ -260,7 +269,7 @@
                     For more details, please refer to the following document:
                     <a href="assets/user-report/Accessibility _ Usability Testing - Sheet1.pdf">Usability Testing Results</a></p>
                 <div class="container">
-                    <table class="table">
+                    <table class="table" >
                         <thead>
                           <tr>
                             <th scope="col">#</th>
