@@ -24,6 +24,13 @@
 #home-banner-div {
     background: url(../../img/banner/claynce-banner-2.png) no-repeat scroll center center !important;
 }
+#claynce-promo-vid {
+    max-width: 100%;
+    height: auto;
+}
+#claynce-promo-vid-div {
+    margin: 0px 0px 45px 0px;
+}
 
 /** System Page **/
 .sample-text-area {
