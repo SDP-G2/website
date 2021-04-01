@@ -17,6 +17,25 @@
 }
 
 /** System Page **/
+.sample-text-area {
+    padding: 60px 0 45px 0 !important;
+}
+.area-heading { /* For header */
+    margin-bottom: 0px !important;
+}
+.area-padding-top {
+    padding-top: 16px;
+}
+.area-padding-bottom {
+    padding-bottom: 32px;
+}
+
+#concept-div {
+    margin-bottom: 45px;
+}
+#design-div {
+    margin-top: 45px;
+}
 
 /** How It Works Page **/
 
@@ -29,6 +48,11 @@
 
 
 /** Team Members Page **/
+#team-members-and-roles-table {
+    margin: 30px 0 45px 0;
+}
+
+
 #header-title {
     font-size: 48px !important;
 }
