@@ -1,8 +1,43 @@
+/** THIS CSS FILE IS INTENDED TO OVERWRITE CERTAIN CHANGES **/
 #claynce-header-text {
     color: white !important;
 }
 
+/** Shared navigation **/
+
+/** Shared Banner **/
+#banner {
+    background: url(../../img/banner/claynce-banner.png) repeat scroll center center !important;
+}
+
+
+/** Home Page **/
+#home-banner-div {
+    background: url(../../img/banner/claynce-banner-2.png) no-repeat scroll center center !important;
+}
+
+/** System Page **/
+
+/** How It Works Page **/
+
 /** Evaluation Page **/
 #evaluation-section {
     margin: 24px auto;
+}
+
+/** Budget Page **/
+
+
+/** Team Members Page **/
+#header-title {
+    font-size: 48px !important;
+}
+#subheader-title {
+    font-size: 36px !important;
+}
+#communication-and-meetings-div {
+    margin: 15px auto;
+}
+#div {
+    margin-top: 30px;
 }
