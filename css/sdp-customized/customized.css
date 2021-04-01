@@ -9,7 +9,16 @@
 #banner {
     background: url(../../img/banner/claynce-banner.png) repeat scroll center center !important;
 }
-
+/** Other Shared Content **/
+#center-image {
+    display: block;
+    margin: 8px auto;
+}
+/** Shared footer **/
+.footer-area {
+    padding-top: 24px;
+    background: #002B53;
+}
 
 /** Home Page **/
 #home-banner-div {
@@ -38,6 +47,11 @@
 }
 
 /** How It Works Page **/
+
+/*** Frontend Page ***/
+#web-application-div {
+    margin: 24px auto;
+}
 
 /** Evaluation Page **/
 #evaluation-section {
